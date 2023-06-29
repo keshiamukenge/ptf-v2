@@ -1,5 +1,9 @@
-import './globals.css'
+import './globals.scss'
+import '@/app/lib/assets/scss/reset.scss'
 import { Inter } from 'next/font/google'
+
+import Header from '@/app/lib/components/Header/Header'
+import { ProjectsProvider } from '@/app/lib/providers/ProjectsContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ProjectsProvider>
+          <Header />
+          {children}
+        </ProjectsProvider>
+      </body>
     </html>
   )
 }
