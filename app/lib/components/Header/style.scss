@@ -1,0 +1,34 @@
+header {
+  height: fit-content;
+  padding: 1rem 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .home-link {
+    grid-column: 1 / 3;
+    display: flex;
+  }
+
+  .job {
+    grid-column: 6 / 10;
+  }
+
+  .works-link {
+    grid-column: 11;
+    display: flex;
+    display: inline-block;
+    text-align: right;
+  }
+
+  .about-link {
+    grid-column: 12;
+    display: flex;
+    display: inline-block;
+    text-align: right;
+  }
+}
