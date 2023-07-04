@@ -3,7 +3,7 @@
 import { useRef, createRef } from 'react'
 
 import './index.scss'
-import Gallery from '@/app/lib/components/WebGL/Gallery'
+import Gallery from '@/app/lib/components/WebGL/Gallery/Gallery'
 import { useProjects } from './lib/providers/ProjectsContext'
 import Footer from '@/app/lib/components/Footer/Footer'
 import WebGLWrapper from '@/app/lib/components/WebGL/WebGLWrapper'

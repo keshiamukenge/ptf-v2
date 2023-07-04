@@ -1,7 +1,4 @@
-'use client'
-
 import { Canvas } from '@react-three/fiber'
-import { useEffect } from 'react';
 
 interface IProps {
     children: React.ReactNode
@@ -11,9 +8,9 @@ export default function WebGLWrapper({ children }: IProps) {
     const cameraPositionZ = 700
     
     const cameraOptions = {
-        position: [0, 0, cameraPositionZ], // Set the initial position of the camera
-        fov: 70, // Set the field of view
-        near: 100, // Set the near clipping plane
+        position: [0, 0, cameraPositionZ],
+        fov: 70,
+        near: 100,
         far: 2000,
         aspect: window.innerWidth / window.innerHeight,
     }
