@@ -1,7 +1,7 @@
 import './globals.scss'
-import '@/app/lib/assets/scss/reset.scss'
 import { Inter } from 'next/font/google'
 
+import '@/app/lib/assets/scss/reset.scss'
 import Header from '@/app/lib/components/Header/Header'
 import { ProjectsProvider } from '@/app/lib/providers/ProjectsContext'
 
