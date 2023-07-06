@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useEffect,
 	useCallback,
+  useRef
 } from 'react'
 
 import { getProjectsServices } from '@/app/lib/services/projects'
@@ -19,15 +20,20 @@ interface IProps {
 export type ProjectsContextType = {
   projects: Project[]
 	setProjects: (project: Project[]) => void
+  selectedPlaneUUID: string | undefined
+  setSelectedPlaneUUID: (uuid: string | undefined) => void
 }
 
 const ProjectsContext = createContext<ProjectsContextType>({
   projects: [],
 	setProjects: () => {},
+  selectedPlaneUUID: undefined,
+  setSelectedPlaneUUID: () => {},
 })
 
 function ProjectsProvider({ children }: IProps) {
   const [projects, setProjects] = useState<Project[]>([])
+  const [selectedPlaneUUID, setSelectedPlaneUUID] = useState<string | undefined>()
 
   const getProjects = useCallback(async () => {
     try {
@@ -45,9 +51,11 @@ function ProjectsProvider({ children }: IProps) {
   const value = useMemo(() => {
     return {
       projects,
-      setProjects
+      setProjects,
+      selectedPlaneUUID,
+      setSelectedPlaneUUID,
     }
-  }, [projects, setProjects])
+  }, [projects, setProjects, selectedPlaneUUID, setSelectedPlaneUUID])
 
   return <ProjectsContext.Provider value={value}>{children}</ProjectsContext.Provider>
 }

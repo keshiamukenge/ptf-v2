@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, createRef } from 'react'
+import Link from 'next/link'
 
 import './index.scss'
 import Gallery from '@/app/lib/components/WebGL/Gallery/Gallery'
@@ -10,7 +11,7 @@ import WebGLWrapper from '@/app/lib/components/WebGL/WebGLWrapper'
 
 export default function Home() {
   const { projects } = useProjects()
-  const itemsRefs = useRef<HTMLLIElement[]>([])
+  const itemsRefs = useRef<React.MutableRefObject<HTMLLIElement>[]>([])
   itemsRefs.current = projects.map((_, i) => itemsRefs.current[i] ?? createRef());
 
   return (
@@ -19,9 +20,9 @@ export default function Home() {
       <ul className="container-projects">
         {projects.map((project, id) => (
           <li key={project.id} ref={itemsRefs.current[id]}>
-            {/* <Image src={project.image.src} alt={project.image.alt} width={200} height={200} /> */}
+            <Link href="/about"></Link>
           </li>
-        ))}
+          ))}
       </ul>
       <WebGLWrapper>
         <Gallery refs={itemsRefs} />
