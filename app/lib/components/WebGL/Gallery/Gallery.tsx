@@ -1,7 +1,9 @@
+'use client'
 
 import { useProjects } from "@/app/lib/providers/ProjectsContext"
 import Plane from "../Plane"
 import { getNormalizeHTMLElementPosition, getHTMLElementSize } from '@/app/lib/utils/webgl'
+import { useEffect } from "react"
 
 interface IProps {
     refs: React.MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>
@@ -9,6 +11,10 @@ interface IProps {
 
 export default function Gallery({ refs }: IProps) {
     const { selectedProjectId } = useProjects()
+
+    useEffect(() => {
+        console.log('gallery', refs)
+    }, [refs])
 
     return refs.current?.map((ref, id) => (
         <Plane

@@ -3,6 +3,7 @@
 		{
 			"id": 0,
 			"title": "project 1",
+			"slug": "project-1",
 			"image": {
 				"src": "/images/projects/2.jpeg",
 				"alt": "project 1"
@@ -11,6 +12,7 @@
 		{
 			"id": 1,
 			"title": "project 2",
+			"slug": "project-2",
 			"image": {
 				"src": "/images/projects/2.jpeg",
 				"alt": "project 2"

@@ -23,6 +23,8 @@ export type ProjectsContextType = {
 	setProjects: (project: Project[]) => void
   selectedProjectId: number | null
   setSelectedProjectId: (id: number | null) => void
+  projectsRefs?: React.MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>
+  setProjectsRefs?: (refs: React.MutableRefObject<HTMLLIElement>[]) => void
 }
 
 const ProjectsContext = createContext<ProjectsContextType>({
@@ -30,11 +32,14 @@ const ProjectsContext = createContext<ProjectsContextType>({
 	setProjects: () => {},
   selectedProjectId: null,
   setSelectedProjectId: () => {},
+  projectsRefs: undefined,
+  setProjectsRefs: undefined,
 })
 
 function ProjectsProvider({ children }: IProps) {
   const [projects, setProjects] = useState<Project[]>([])
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null)
+  const [projectsRefs, setProjectsRefs] = useState<React.MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>>()
 
   const getProjects = useCallback(async () => {
     try {
@@ -59,8 +64,10 @@ function ProjectsProvider({ children }: IProps) {
       setProjects,
       selectedProjectId,
       setSelectedProjectId,
+      projectsRefs,
+      setProjectsRefs,
     }
-  }, [projects, setProjects, selectedProjectId, setSelectedProjectId])
+  }, [projects, setProjects, selectedProjectId, setSelectedProjectId, projectsRefs, setProjectsRefs])
 
   return <ProjectsContext.Provider value={value}>{children}</ProjectsContext.Provider>
 }
