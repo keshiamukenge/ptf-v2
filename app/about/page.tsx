@@ -1,8 +1,7 @@
-'use client'
-
 import Image from 'next/image'
 
 import './style.scss'
+import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
 import Footer from "@/app/lib/components/Footer/Footer"
 
 export default function About() {
@@ -10,7 +9,9 @@ export default function About() {
 		<main className="about-page">
 			<div className="main-container">
 				<div className="container-image">
-					<Image src="/images/about.png" alt="Keshia mukenge's picture" width={200} height={200} />
+					<LinkWithDelay href="/">
+						<Image src="/images/about.png" alt="Keshia mukenge's picture" width={200} height={200} />
+					</LinkWithDelay>
 				</div>
 				<div className="container-text">
 					<h1>About</h1>

@@ -7,7 +7,8 @@ import React, {
   useMemo,
   useEffect,
 	useCallback,
-  useRef
+  useRef,
+  use
 } from 'react'
 
 import { getProjectsServices } from '@/app/lib/services/projects'
@@ -20,20 +21,20 @@ interface IProps {
 export type ProjectsContextType = {
   projects: Project[]
 	setProjects: (project: Project[]) => void
-  selectedPlaneUUID: string | undefined
-  setSelectedPlaneUUID: (uuid: string | undefined) => void
+  selectedProjectId: number | null
+  setSelectedProjectId: (id: number | null) => void
 }
 
 const ProjectsContext = createContext<ProjectsContextType>({
   projects: [],
 	setProjects: () => {},
-  selectedPlaneUUID: undefined,
-  setSelectedPlaneUUID: () => {},
+  selectedProjectId: null,
+  setSelectedProjectId: () => {},
 })
 
 function ProjectsProvider({ children }: IProps) {
   const [projects, setProjects] = useState<Project[]>([])
-  const [selectedPlaneUUID, setSelectedPlaneUUID] = useState<string | undefined>()
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null)
 
   const getProjects = useCallback(async () => {
     try {
@@ -48,14 +49,18 @@ function ProjectsProvider({ children }: IProps) {
     getProjects()
   }, [getProjects])
 
+  useEffect(() => {
+    console.log('selected id', selectedProjectId)
+  }, [selectedProjectId])
+
   const value = useMemo(() => {
     return {
       projects,
       setProjects,
-      selectedPlaneUUID,
-      setSelectedPlaneUUID,
+      selectedProjectId,
+      setSelectedProjectId,
     }
-  }, [projects, setProjects, selectedPlaneUUID, setSelectedPlaneUUID])
+  }, [projects, setProjects, selectedProjectId, setSelectedProjectId])
 
   return <ProjectsContext.Provider value={value}>{children}</ProjectsContext.Provider>
 }

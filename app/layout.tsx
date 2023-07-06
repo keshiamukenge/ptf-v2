@@ -2,7 +2,7 @@ import './globals.scss'
 import { Inter } from 'next/font/google'
 
 import '@/app/lib/assets/scss/reset.scss'
-import PageTransitionWrapper from '@/app/lib/components/PageTransitionWrapper/PageTransitionWrapper'
+import PageTransitionWrapper from '@/app/lib/components/PageTransition/PageTransitionWrapper'
 import Header from '@/app/lib/components/Header/Header'
 import { ProjectsProvider } from '@/app/lib/providers/ProjectsContext'
 
@@ -21,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <PageTransitionWrapper>
-          <ProjectsProvider>
+        <ProjectsProvider>
+          <PageTransitionWrapper>
             <Header />
             {children}
-          </ProjectsProvider>
-        </PageTransitionWrapper>
+          </PageTransitionWrapper>
+        </ProjectsProvider>
       </body>
     </html>
   )
