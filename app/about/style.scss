@@ -31,6 +31,12 @@
 
       p {
         padding-right: 6rem;
+
+        span {
+          span {
+            transform: translateY(100%);
+          }
+        }
       }
     }
   }

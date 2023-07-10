@@ -7,8 +7,7 @@ import React, {
   useMemo,
   useEffect,
 	useCallback,
-  useRef,
-  use
+  MutableRefObject,
 } from 'react'
 
 import { getProjectsServices } from '@/app/lib/services/projects'
@@ -23,8 +22,8 @@ export type ProjectsContextType = {
 	setProjects: (project: Project[]) => void
   selectedProjectId: number | null
   setSelectedProjectId: (id: number | null) => void
-  projectsRefs?: React.MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>
-  setProjectsRefs?: (refs: React.MutableRefObject<HTMLLIElement>[]) => void
+  projectsRefs: MutableRefObject<MutableRefObject<HTMLLIElement>[]> | null
+  setProjectsRefs: (refs: MutableRefObject<MutableRefObject<HTMLLIElement>[]>) => void
 }
 
 const ProjectsContext = createContext<ProjectsContextType>({
@@ -32,14 +31,14 @@ const ProjectsContext = createContext<ProjectsContextType>({
 	setProjects: () => {},
   selectedProjectId: null,
   setSelectedProjectId: () => {},
-  projectsRefs: undefined,
-  setProjectsRefs: undefined,
+  projectsRefs: null,
+  setProjectsRefs: () => {},
 })
 
 function ProjectsProvider({ children }: IProps) {
   const [projects, setProjects] = useState<Project[]>([])
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null)
-  const [projectsRefs, setProjectsRefs] = useState<React.MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>>()
+  const [projectsRefs, setProjectsRefs] = useState<MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>>(null)
 
   const getProjects = useCallback(async () => {
     try {
@@ -53,10 +52,6 @@ function ProjectsProvider({ children }: IProps) {
   useEffect(() => {
     getProjects()
   }, [getProjects])
-
-  useEffect(() => {
-    console.log('selected id', selectedProjectId)
-  }, [selectedProjectId])
 
   const value = useMemo(() => {
     return {

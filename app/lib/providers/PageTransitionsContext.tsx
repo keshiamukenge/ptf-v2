@@ -5,17 +5,17 @@ import React, {
   useContext,
   createContext,
   useMemo,
-	useEffect,
 } from 'react'
-import {usePathname} from 'next/navigation'
+
+type TransitionState = "beforeLeave" | "leave" | "finishLeave" | "start" | undefined
 
 interface IProps {
   children: React.ReactNode
 }
 
 export type PageTransitionsContextType = {
-  transitionState: "beforeLeave" | "leave" | "finishLeave" | undefined
-	setTransitionState: (transitionState: string | undefined) => void
+  transitionState: TransitionState
+	setTransitionState: (transitionState: TransitionState) => void
 }
 
 const PageTransitionsContext = createContext<PageTransitionsContextType>({
@@ -24,11 +24,7 @@ const PageTransitionsContext = createContext<PageTransitionsContextType>({
 })
 
 function PageTransitionsProvider({ children }: IProps) {
-  const [transitionState, setTransitionState] = useState()
-
-	useEffect(() => {
-		console.log(transitionState)
-	}, [transitionState])
+  const [transitionState, setTransitionState] = useState<TransitionState>()
 
   const value = useMemo(() => {
     return {

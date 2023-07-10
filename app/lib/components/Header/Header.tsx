@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import './style.scss'
+import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
 
 export default function Header() {
 	return(
 		<header>
-			<Link className="home-link" href="/">Keshia Mukenge</Link>
+			<LinkWithDelay href="/" delayBeforeLeave={1500} delayToStart={500}>Keshia Mukenge</LinkWithDelay>
 			<span className="job">Web Developer - Front End</span>
-			<Link className="works-link" href="/">Works</Link>
-			<Link className="about-link" href="/about">About</Link>
+			<LinkWithDelay additionalClassName="works-link" href="/" delayBeforeLeave={1500} delayToStart={500}>Works</LinkWithDelay>
+			<LinkWithDelay additionalClassName="about-link" href="/about" delayBeforeLeave={1500} delayToStart={500}>About</LinkWithDelay>
 		</header>
 	)
 }

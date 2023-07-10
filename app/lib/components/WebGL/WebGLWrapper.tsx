@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export default function WebGLWrapper({ children }: IProps) {
-    const cameraPositionZ = 700
+    const cameraPositionZ = 596
     
     const cameraOptions = {
         position: [0, 0, cameraPositionZ],

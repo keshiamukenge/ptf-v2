@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 
 import './globals.scss'
 import '@/app/lib/assets/scss/reset.scss'
-import WebGLWrapper from '@/app/lib/components/WebGL/WebGLWrapper'
+import Transition from '@/app/lib/components/PageTransition/Transition'
 import PageTransitionWrapper from '@/app/lib/components/PageTransition/PageTransitionWrapper'
 import Header from '@/app/lib/components/Header/Header'
 import { ProjectsProvider } from '@/app/lib/providers/ProjectsContext'
@@ -17,7 +17,6 @@ export const metadata = {
 
 export default function RootLayout(props: {
   children: React.ReactNode
-  webgl: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -26,9 +25,7 @@ export default function RootLayout(props: {
           <PageTransitionWrapper>
             <Header />
             {props.children}
-            <WebGLWrapper>
-              {props.webgl}
-            </WebGLWrapper>
+            <Transition />
           </PageTransitionWrapper>
         </ProjectsProvider>
       </body>

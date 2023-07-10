@@ -3,11 +3,10 @@
 import { useEffect, useRef } from 'react'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import gsap from 'gsap'
-import { ThreeEvent, useLoader, extend } from '@react-three/fiber'
+import { useLoader, extend } from '@react-three/fiber'
 import { shaderMaterial } from '@react-three/drei'
 import { PlaneGeometry, Mesh } from 'three';
 
-import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import { fragment } from './Gallery/fragmentShader'
 import { vertex } from './Gallery/vertexShader'
 
@@ -15,6 +14,7 @@ interface IProps {
 	position: [number, number, number];
 	args: [number, number, number, number];
 	isSelected: boolean;
+	imageUrl: string;
 }
 
 extend({ PlaneGeometry, Mesh });
@@ -35,12 +35,13 @@ const RippleShaderMaterial = shaderMaterial(
 
 extend({ RippleShaderMaterial });
 
-export default function Plane({ position, args, isSelected }: IProps) {
-  const texture = useLoader(TextureLoader, "/images/projects/2.jpeg")
-	const meshRef = useRef<Mesh>()
-	const { selectedProjectId } = useProjects()
+export default function Plane({ position, args, isSelected, imageUrl }: IProps) {
+  const texture = useLoader(TextureLoader, imageUrl)
+	const meshRef = useRef<Mesh>(null)
 
-	function selectedPlaneLeaveAnimation() {
+	function startWaveAnimation() {
+		if(!meshRef.current) return
+
 		gsap.set(meshRef.current.material.uniforms.uAmplitude, {
 			value: 35.0,
 		})
@@ -51,6 +52,8 @@ export default function Plane({ position, args, isSelected }: IProps) {
 			value: 0.0,
 			duration: 2,
 			onUpdate: () => {
+				if(!meshRef.current) return
+
 				meshRef.current.material.uniforms.uTime.value += 0.01
 			},
 		})
@@ -58,29 +61,11 @@ export default function Plane({ position, args, isSelected }: IProps) {
 			value: 0.0,
 			duration: 1.5,
 		})
-		// gsap.to(meshRef.current.position, {
-		// 	z: 1,
-		// 	duration: 0.9,
-		// 	x: 1,
-		// 	y: 1,
-		// })
-		// gsap.to(meshRef.current.scale, {
-		// 	duration: 0.5,
-		// 	x: 1.5,
-		// 	y: 1.5,
-		// })
-	}
-
-	function notSelectedPlaneLeaveAnimation() {
-		gsap.to(meshRef.current.material.uniforms.uAlpha, {
-			value: 0.0,
-			duration: 0.5,
-		})
 	}
 
 	useEffect(() => {
-		if(isSelected) {
-			selectedPlaneLeaveAnimation()
+		if (isSelected) {
+			startWaveAnimation()
 		}
 	}, [isSelected])
 
