@@ -1,0 +1,22 @@
+.container-title-animation,
+.container-text-animation {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.title-animation,
+.text-animation {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  transform: translateY(100%);
+}
+
+.paragraph-animation {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
