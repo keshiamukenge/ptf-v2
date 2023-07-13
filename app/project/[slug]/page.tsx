@@ -1,7 +1,7 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import gsap from 'gsap'
 
 import './style.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'
@@ -12,6 +12,7 @@ import { Project } from '@/app/lib/types/projects'
 import ProjectInformations from '@/app/lib/components/Project/ProjectInformations'
 import ProjectImages from '@/app/lib/components/Project/ProjectImages'
 import Footer from '@/app/lib/components/Footer/Footer'
+import NextProject from '@/app/lib/components/Project/NextProject'
 
 interface IProps {
 	params: {
@@ -21,23 +22,36 @@ interface IProps {
 
 export default function ProjectPage({ params }: IProps) {
 	const [currentProject, setCurrentProject] = useState<Project | undefined>()
-	const { projects, selectedProjectId } = useProjects()
+	const { projects, selectedProjectId, setSelectedProjectId } = useProjects()
+	const containerProjectContentRef = useRef<HTMLDivElement | null>(null)
+	const projectPageRef = useRef<HTMLElement>(null)
 	const scroll = useScroll()
-	const router = useRouter()
-	
-	useEffect(() => {
-		if(!selectedProjectId) {
-			projects.forEach(project => {
-				if(project.slug === params.slug) {
-					setCurrentProject(project)
 
-					return
-				}
-			})
-		} else {
-			setCurrentProject(projects[selectedProjectId])
-		}
-	}, [projects])
+	useEffect(() => {
+		projects.forEach(project => {
+			if(project.slug === params.slug) {
+				setCurrentProject(project)
+				setSelectedProjectId(project.id)
+
+				return
+			}
+		})
+	}, [selectedProjectId, params.slug, projects, setCurrentProject, setSelectedProjectId])
+
+	useEffect(() => {
+		scroll?.on('scroll', ({ targetScroll }) => {
+			if(targetScroll > 600) {
+				containerProjectContentRef.current.style.transform = `translateY(${projectPageRef.current?.getBoundingClientRect().top}px`
+				// gsap.to(, {
+				// 	top: - (containerProjectContentRef.current?.offsetTop + targetScroll * 0.01) * direction,
+				// })
+			} else {
+				gsap.set(containerProjectContentRef.current, {
+					y: 0
+				})
+			}
+		})
+	})
 
 	if(!currentProject) {
 		return null
@@ -45,8 +59,8 @@ export default function ProjectPage({ params }: IProps) {
 
 	return (
 		<>
-			<main className="project-page">
-				<div className="container-project-content">
+			<main ref={projectPageRef} className="project-page">
+				<div ref={containerProjectContentRef} className="container-project-content">
 					<h1>
 						<TitleAnimation text={currentProject.title}/>
 					</h1>
@@ -65,6 +79,7 @@ export default function ProjectPage({ params }: IProps) {
 				<div className="container-project-images">
 					<ProjectImages images={currentProject.imagesContent} />
 				</div>
+				<NextProject project={currentProject} currentSlug={params.slug} />
 			</main>
 			<Footer />
 		</>
