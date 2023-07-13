@@ -12,10 +12,9 @@ import { Project } from "@/app/lib/types/projects";
 
 interface IProps {
 	project: Project
-	currentSlug: string
 }
 
-export default function NextProject({ project, currentSlug }: IProps) {
+export default function NextProject({ project }: IProps) {
 	const lineRef = useRef<HTMLHeadingElement>(null)
 	const arrowIconRef = useRef<HTMLImageElement>(null)
 	const nextProjectContainer = useRef<HTMLDivElement>(null)
