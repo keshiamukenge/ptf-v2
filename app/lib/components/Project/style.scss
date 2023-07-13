@@ -2,7 +2,8 @@
   width: 100%;
   height: fit-content;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  grid-gap: 2rem 2rem;
   margin: 2rem 0;
 
   .container-infos {
@@ -11,7 +12,7 @@
 
     .infos-label {
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
   }
 }
@@ -23,7 +24,7 @@
 
   li {
     width: 100%;
-    height: 45vh;
+    height: 55vh;
 
     img {
       width: 100%;
@@ -34,12 +35,12 @@
 }
 
 .next-project {
-  margin: 10rem 0;
-  width: 100%;
+  margin: 10rem auto;
+  width: fit-content;
   height: fit-content;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
 
   &:hover {
     cursor: pointer;
@@ -47,6 +48,7 @@
 
   .container-text {
     overflow: hidden;
+    margin-right: 4rem;
 
     &-label {
       margin-bottom: 2rem;
@@ -68,5 +70,6 @@
     opacity: 1;
     width: auto;
     height: 80px;
+    margin-top: 1rem;
   }
 }

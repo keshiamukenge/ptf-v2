@@ -13,6 +13,8 @@ import ProjectInformations from '@/app/lib/components/Project/ProjectInformation
 import ProjectImages from '@/app/lib/components/Project/ProjectImages'
 import Footer from '@/app/lib/components/Footer/Footer'
 import NextProject from '@/app/lib/components/Project/NextProject'
+import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
+import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 
 interface IProps {
 	params: {
@@ -40,11 +42,8 @@ export default function ProjectPage({ params }: IProps) {
 
 	useEffect(() => {
 		scroll?.on('scroll', ({ targetScroll }) => {
-			if(targetScroll > 600) {
+			if(targetScroll > projectPageRef.current?.getBoundingClientRect().bottom) {
 				containerProjectContentRef.current.style.transform = `translateY(${projectPageRef.current?.getBoundingClientRect().top}px`
-				// gsap.to(, {
-				// 	top: - (containerProjectContentRef.current?.offsetTop + targetScroll * 0.01) * direction,
-				// })
 			} else {
 				gsap.set(containerProjectContentRef.current, {
 					y: 0
@@ -74,6 +73,13 @@ export default function ProjectPage({ params }: IProps) {
 									/>
 							</p>
 						))}
+					</div>
+					<div className="container-view-site-link">
+						<TextAnimation
+							text={
+								<ExternalLink label="View site" href={currentProject.siteUrl} />
+							}
+						/>
 					</div>
 				</div>
 				<div className="container-project-images">

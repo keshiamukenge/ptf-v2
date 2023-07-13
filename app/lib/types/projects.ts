@@ -6,6 +6,7 @@ export interface Project {
 	id:    number;
 	title: string;
 	slug:  string;
+	siteUrl: string;
 	image: ProjectImage;
 	details: ProjectDetail[];
 	sources: ProjectSources;

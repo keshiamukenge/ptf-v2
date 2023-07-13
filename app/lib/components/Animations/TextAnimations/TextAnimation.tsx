@@ -1,13 +1,14 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 import './style.scss'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 interface IProps {
-	text: string
+	text: string | React.ReactNode
+	delay?: number
 }
 
 export default function TextAnimation({ text }: IProps) {
