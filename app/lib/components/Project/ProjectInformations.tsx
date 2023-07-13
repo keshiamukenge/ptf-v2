@@ -1,6 +1,7 @@
 import './style.scss'
 import { Project } from '@/app/lib/types/projects'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
+import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
 
 interface IProps {
 	project: Project
@@ -29,7 +30,11 @@ export default function ProjectInformations({ project }: IProps) {
 					{project.sources.links.map(source => (
 						<a key={source.label} href={source.url} target="_blank" rel="noreferrer">
 							<span className="infos-content">
-								<TextAnimation text={source.label} />
+								<TextAnimation
+									text={
+										<ExternalLink href={source.url} label={source.label} />
+									}
+								/>
 							</span>
 						</a>
 					))}

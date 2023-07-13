@@ -16,11 +16,21 @@ header {
   }
 
   .job {
-    grid-column: 6 / 10;
+    grid-column: 4 / 8;
+    grid-row: 1;
+  }
+
+  .selected-works-link {
+    grid-column: 9 / span 2;
+    display: flex;
+    grid-row: 1;
+    display: inline-block;
+    text-align: right;
   }
 
   .works-link {
     grid-column: 11;
+    grid-row: 1;
     display: flex;
     display: inline-block;
     text-align: right;
@@ -28,6 +38,7 @@ header {
 
   .about-link {
     grid-column: 12;
+    grid-row: 1;
     display: flex;
     display: inline-block;
     text-align: right;
