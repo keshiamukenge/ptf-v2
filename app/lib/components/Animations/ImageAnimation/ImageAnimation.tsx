@@ -11,10 +11,9 @@ interface IProps {
 	alt: string;
 	width: number;
 	height: number;
-	imageRef?: RefObject<HTMLImageElement>;
 }
 
-export default function ImageAnimation({ src, alt, width, height, imageRef }: IProps) {
+export default function ImageAnimation({ src, alt, width, height }: IProps) {
 	const imgRef = useRef<HTMLImageElement>(null);
 	const { transitionState } = usePageTransitions();
 

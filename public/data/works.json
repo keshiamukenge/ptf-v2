@@ -1,0 +1,56 @@
+{
+	"projects": [
+		{
+			"id": 0,
+			"name": "Project 1",
+			"date": "2014-01-01",
+			"stack": "NUXTJS",
+			"content": {
+				"image": {
+					"src": "https://via.placeholder.com/300x200",
+					"alt": "Project 1"
+				},
+				"description": "lorem ipsum dolor sit amet"
+			}
+		},
+		{
+			"id": 1,
+			"name": "Project 1",
+			"date": "2014-01-01",
+			"stack": "NUXTJS",
+			"content": {
+				"image": {
+					"src": "https://via.placeholder.com/300x200",
+					"alt": "Project 1"
+				},
+				"description": "lorem ipsum dolor sit amet"
+			}
+		},
+		{
+			"id": 2,
+			"name": "Project 1",
+			"date": "2014-01-01",
+			"stack": "NUXTJS",
+			"content": {
+				"image": {
+					"src": "https://via.placeholder.com/300x200",
+					"alt": "Project 1"
+				},
+				"description": "lorem ipsum dolor sit amet"
+			}
+		},
+		{
+			"id": 3,
+			"name": "Project 1",
+			"date": "2014-01-01",
+			"stack": "NUXTJS",
+			"content": {
+				"image": {
+					"src": "https://via.placeholder.com/300x200",
+					"alt": "Project 1"
+				},
+				"description": "lorem ipsum dolor sit amet"
+			}
+		}
+	]
+}

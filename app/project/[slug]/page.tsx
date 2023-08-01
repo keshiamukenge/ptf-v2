@@ -28,6 +28,7 @@ export default function ProjectPage({ params }: IProps) {
 	const containerProjectContentRef = useRef<HTMLDivElement | null>(null)
 	const projectPageRef = useRef<HTMLElement>(null)
 	const scroll = useScroll()
+	const containerProjectImages = useRef<HTMLDivElement | null>(null)
 
 	useEffect(() => {
 		projects.forEach(project => {
@@ -41,14 +42,15 @@ export default function ProjectPage({ params }: IProps) {
 	}, [selectedProjectId, params.slug, projects, setCurrentProject, setSelectedProjectId])
 
 	useEffect(() => {
-		scroll?.on('scroll', ({ targetScroll }) => {
-			if(targetScroll > projectPageRef.current?.getBoundingClientRect().bottom) {
-				containerProjectContentRef.current.style.transform = `translateY(${projectPageRef.current?.getBoundingClientRect().top}px`
-			} else {
-				gsap.set(containerProjectContentRef.current, {
-					y: 0
-				})
-			}
+		gsap.to(containerProjectContentRef.current, {
+			scrollTrigger: {
+				trigger: containerProjectImages.current,
+				start: 'bottom +=100%',
+				end: 'bottom -=100%',
+				scrub: true,
+			},
+			y: "-200vh",
+			ease: 'none',
 		})
 	})
 
@@ -82,10 +84,10 @@ export default function ProjectPage({ params }: IProps) {
 						/>
 					</div>
 				</div>
-				<div className="container-project-images">
+				<div className="container-project-images" ref={containerProjectImages}>
 					<ProjectImages images={currentProject.imagesContent} />
 				</div>
-				<NextProject project={currentProject} currentSlug={params.slug} />
+				<NextProject project={currentProject} />
 			</main>
 			<Footer />
 		</>
