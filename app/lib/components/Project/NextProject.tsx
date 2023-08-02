@@ -50,16 +50,6 @@ export default function NextProject({ project }: IProps) {
 		})
 	}
 
-	useEffect(() => {
-		if(transitionState === 'start') {
-			gsap.to(nextProjectContainer.current, {
-				delay: 0.1,
-				duration: 0.1,
-				opacity: 0,
-			})
-		}
-	}, [transitionState])
-
 	if(typeof nextProjectId !== 'number') {
 		return null
 	}
@@ -69,8 +59,8 @@ export default function NextProject({ project }: IProps) {
 			<LinkWithDelay
 				href={`/project/${projects[nextProjectId].slug}`}
 				onClick={() => setSelectedProjectId(projects[nextProjectId].id)}
-				delayBeforeLeave={1500}
-				delayToStart={500}
+				delayBeforeLeave={1000}
+				delayToStart={0}
 			>
 				<div className="next-project" onMouseEnter={onEnter} onMouseLeave={onLeave}>
 					<div className="container-text">

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, createRef, useEffect, MutableRefObject } from 'react'
+import gsap from 'gsap'
 
 import './index.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'
@@ -10,10 +11,13 @@ import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import Gallery from '@/app/lib/components/WebGL/Gallery/Gallery'
 import WebGLWrapper from '@/app/lib/components/WebGL/WebGLWrapper'
+import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 export default function Home() {
   const { projects, setSelectedProjectId, setProjectsRefs } = useProjects()
+  const { transitionState } = usePageTransitions()
   useScroll()
+  const homePageRef = useRef<HTMLElement>(null)
   const itemsRefs: MutableRefObject<MutableRefObject<HTMLLIElement>[]> = useRef<MutableRefObject<HTMLLIElement>[]>([])
   itemsRefs.current = projects.map((_, i) => itemsRefs.current[i] ?? createRef());
 
@@ -24,9 +28,18 @@ export default function Home() {
   useEffect(() => {
     setProjectsRefs(itemsRefs)
   }, [itemsRefs])
+
+  useEffect(() => {
+		if(transitionState === 'start') {
+			gsap.to(homePageRef.current, {
+				duration: 0.5,
+				y: -100,
+			})
+		}
+	}, [transitionState])
   
   return (
-    <main className="home-page">
+    <main className="home-page" ref={homePageRef}>
       <h1>
         <TitleAnimation text="Selected Works" />
       </h1>
@@ -38,7 +51,7 @@ export default function Home() {
           >
             <LinkWithDelay
               href={`/project/${project.slug}`}
-              onClick={() => setSelectedProjectId(id)} delayBeforeLeave={1500} delayToStart={500}
+              onClick={() => setSelectedProjectId(id)} delayBeforeLeave={1000} delayToStart={0}
             />
           </li>
           ))}

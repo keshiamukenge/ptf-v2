@@ -10,7 +10,7 @@ import React, {
   MutableRefObject,
 } from 'react'
 
-import { getProjectsServices } from '@/app/lib/services/projects'
+import { getSelectedWorksServices } from '@/app/lib/services/projects'
 import { Project } from '@/app/lib/types/projects'
 
 interface IProps {
@@ -45,9 +45,9 @@ function ProjectsProvider({ children }: IProps) {
   const [projectsRefs, setProjectsRefs] = useState<MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>>(null)
   const [nextProjectId, setNextProjectId] = useState<number | null>(null)
 
-  const getProjects = useCallback(async () => {
+  const getSelectedProjects = useCallback(async () => {
     try {
-      const response = await getProjectsServices()
+      const response = await getSelectedWorksServices()
       setProjects(response)
     } catch (error) {
       console.log(error)
@@ -55,8 +55,8 @@ function ProjectsProvider({ children }: IProps) {
   }, [])
 
   useEffect(() => {
-    getProjects()
-  }, [getProjects])
+    getSelectedProjects()
+  }, [getSelectedProjects])
 
   useEffect(() => {
     if(selectedProjectId === null) return
