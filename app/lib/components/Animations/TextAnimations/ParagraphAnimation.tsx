@@ -41,13 +41,13 @@ export default function ParagraphAnimation({ target, text }: IProps) {
 			})
 		}
 
-		if(transitionState === 'start') {
-			gsap.to('.paragraph-animation span span', {
-				delay: 0.1,
-				duration: 0.1,
-				opacity: 0,
-			})
-		}
+		// if(transitionState === 'start') {
+		// 	gsap.to('.paragraph-animation span span', {
+		// 		delay: 0.1,
+		// 		duration: 0.1,
+		// 		opacity: 0,
+		// 	})
+		// }
 	}, [transitionState])
 
 	return <BasicText text={text} target={target} />

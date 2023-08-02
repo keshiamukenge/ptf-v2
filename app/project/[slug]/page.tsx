@@ -15,6 +15,7 @@ import Footer from '@/app/lib/components/Footer/Footer'
 import NextProject from '@/app/lib/components/Project/NextProject'
 import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
+import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 interface IProps {
 	params: {
@@ -25,6 +26,7 @@ interface IProps {
 export default function ProjectPage({ params }: IProps) {
 	const [currentProject, setCurrentProject] = useState<Project | undefined>()
 	const { projects, selectedProjectId, setSelectedProjectId } = useProjects()
+	const { transitionState } = usePageTransitions()
 	const containerProjectContentRef = useRef<HTMLDivElement | null>(null)
 	const projectPageRef = useRef<HTMLElement>(null)
 	const scroll = useScroll()
@@ -53,6 +55,15 @@ export default function ProjectPage({ params }: IProps) {
 			ease: 'none',
 		})
 	})
+
+	useEffect(() => {
+		if(transitionState === 'start') {
+			gsap.to(projectPageRef.current, {
+				duration: 0.5,
+				y: -100,
+			})
+		}
+	}, [transitionState])
 
 	if(!currentProject) {
 		return null

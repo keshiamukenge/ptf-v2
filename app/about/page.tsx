@@ -1,6 +1,7 @@
 'use client'
 
-import Image from 'next/image'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 import './style.scss'
 import { useScroll } from '@/app/lib/hooks/useScroll'
@@ -9,15 +10,27 @@ import Footer from "@/app/lib/components/Footer/Footer"
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import ParagraphAnimation from '@/app/lib/components/Animations/TextAnimations/ParagraphAnimation'
 import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/ImageAnimation'
+import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
 
 export default function About() {
+	const aboutPageRef = useRef<HTMLElement>(null)
+	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
 
+	useEffect(() => {
+		if(transitionState === 'start') {
+			gsap.to(aboutPageRef.current, {
+				duration: 0.5,
+				y: -100,
+			})
+		}
+	}, [transitionState])
+
 	return (
-		<main className="about-page">
+		<main ref={aboutPageRef} className="about-page">
 			<div className="main-container">
 				<div className="container-image">
-					<LinkWithDelay href="/" delayBeforeLeave={0} delayToStart={1000}>
+					<LinkWithDelay href="/" delayBeforeLeave={1000} delayToStart={0}>
 						<ImageAnimation src="/images/about.png" alt="Keshia mukenge's picture" width={200} height={200} />
 					</LinkWithDelay>
 				</div>

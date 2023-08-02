@@ -11,6 +11,7 @@ interface IProps {
 	alt: string;
 	width: number;
 	height: number;
+	parallax?: boolean;
 }
 
 export default function ImageAnimation({ src, alt, width, height }: IProps) {
@@ -25,12 +26,12 @@ export default function ImageAnimation({ src, alt, width, height }: IProps) {
 			})
 		}
 
-		if(transitionState === 'start') {
-			gsap.to(imgRef.current, {
-				duration: 0.3,
-				opacity: 0,
-			})
-		}
+		// if(transitionState === 'start') {
+		// 	gsap.to(imgRef.current, {
+		// 		duration: 0.3,
+		// 		opacity: 0,
+		// 	})
+		// }
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(imgRef.current, {
@@ -41,7 +42,9 @@ export default function ImageAnimation({ src, alt, width, height }: IProps) {
 		}
 	}, [transitionState]);
 
-	
-
-	return <BasicImage imageRef={imgRef} src={src} alt={alt} width={width} height={height} />
+	return (
+		<div className='container-image-animation'>
+			<BasicImage imageRef={imgRef} src={src} alt={alt} width={width} height={height} />
+		</div>
+	)
 }
