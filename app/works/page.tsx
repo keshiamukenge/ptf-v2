@@ -4,9 +4,11 @@ import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 
 import './style.scss'
+import { useScroll } from '@/app/lib/hooks/useScroll'
 import ItemsList from '@/app/lib/components/ItemsList/ItemsList'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import Footer from '@/app/lib/components/Footer/Footer'
+import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import { getWorksServices } from '@/app/lib/services/projects'
 import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
 import { Work } from '@/app/lib/types/works'
@@ -15,13 +17,13 @@ export default function Works() {
 	const [works, setWorks] = useState<Work[]>([])
 	const worksPageRef = useRef<HTMLDivElement | null>(null)
 	const { transitionState } = usePageTransitions()
+	const scroll = useScroll()
 
 	async function getWorks() {
 		try {
 			const result = await getWorksServices()
 
 			setWorks(result)
-			console.log(result)
 		} catch (error) {
 			console.log(error)
 		}
@@ -43,6 +45,7 @@ export default function Works() {
 	return(
 		<div>
 			<main ref={worksPageRef} className="works-page">
+				<ScrollBar scrollInstance={scroll} />
 				<div className="container-page-title">
 					<h1>
 						<TitleAnimation text="Works" />

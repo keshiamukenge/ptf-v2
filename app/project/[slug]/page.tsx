@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 
 import './style.scss'
-import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import { useScroll } from '@/app/lib/hooks/useScroll'
+import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import ParagraphAnimation from '@/app/lib/components/Animations/TextAnimations/ParagraphAnimation'
 import { Project } from '@/app/lib/types/projects'
@@ -15,6 +15,7 @@ import Footer from '@/app/lib/components/Footer/Footer'
 import NextProject from '@/app/lib/components/Project/NextProject'
 import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
+import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 interface IProps {
@@ -29,8 +30,8 @@ export default function ProjectPage({ params }: IProps) {
 	const { transitionState } = usePageTransitions()
 	const containerProjectContentRef = useRef<HTMLDivElement | null>(null)
 	const projectPageRef = useRef<HTMLElement>(null)
-	const scroll = useScroll()
 	const containerProjectImages = useRef<HTMLDivElement | null>(null)
+	const scroll = useScroll()
 
 	useEffect(() => {
 		projects.forEach(project => {
@@ -72,6 +73,7 @@ export default function ProjectPage({ params }: IProps) {
 	return (
 		<>
 			<main ref={projectPageRef} className="project-page">
+				<ScrollBar scrollInstance={scroll}/>
 				<div ref={containerProjectContentRef} className="container-project-content">
 					<h1>
 						<TitleAnimation text={currentProject.title}/>

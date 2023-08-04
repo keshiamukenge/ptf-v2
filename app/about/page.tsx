@@ -10,6 +10,7 @@ import Footer from "@/app/lib/components/Footer/Footer"
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import ParagraphAnimation from '@/app/lib/components/Animations/TextAnimations/ParagraphAnimation'
 import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/ImageAnimation'
+import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
 
 export default function About() {
@@ -28,6 +29,7 @@ export default function About() {
 
 	return (
 		<main ref={aboutPageRef} className="about-page">
+			<ScrollBar scrollInstance={scroll} />
 			<div className="main-container">
 				<div className="container-image">
 					<LinkWithDelay href="/" delayBeforeLeave={400} delayToStart={0}>
