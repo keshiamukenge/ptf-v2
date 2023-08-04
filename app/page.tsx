@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, createRef, useEffect, MutableRefObject } from 'react'
+import { useRef, createRef, useEffect, MutableRefObject, useCallback } from 'react'
 import gsap from 'gsap'
 
 import './style.scss'
@@ -18,8 +18,33 @@ export default function Home() {
   const { transitionState } = usePageTransitions()
   const scroll = useScroll()
   const homePageRef = useRef<HTMLElement>(null)
+  const projectsTitlesRef: MutableRefObject<MutableRefObject<HTMLSpanElement>[]> = useRef<MutableRefObject<HTMLSpanElement>[]>([])
   const itemsRefs: MutableRefObject<MutableRefObject<HTMLLIElement>[]> = useRef<MutableRefObject<HTMLLIElement>[]>([])
   itemsRefs.current = projects.map((_, i) => itemsRefs.current[i] ?? createRef());
+  projectsTitlesRef.current = projects.map((_, i) => projectsTitlesRef.current[i] ?? createRef());
+
+  const onMouseEnter = useCallback((id: number) => {
+    if(!projectsTitlesRef.current[id].current) return
+
+    gsap.to(projectsTitlesRef.current[id].current, {
+      duration: 0.5,
+      y: 0,
+    })
+  }, [])
+
+  const onMouseLeave = useCallback((id: number) => {
+    if(!projectsTitlesRef.current[id].current) return
+
+    gsap.to(projectsTitlesRef.current[id].current, {
+      duration: 0.5,
+      y: '-100%',
+      onComplete: () => {
+        gsap.set(projectsTitlesRef.current[id].current, {
+          y: '100%'
+        })
+      }
+    })
+  }, [])
 
   useEffect(() => {
     setSelectedProjectId(null)
@@ -49,6 +74,8 @@ export default function Home() {
           <li
             key={project.id}
             ref={itemsRefs.current[id]}
+            onMouseEnter={() => onMouseEnter(id)}
+            onMouseLeave={() => onMouseLeave(id)}
           >
             <LinkWithDelay
               href={`/project/${project.slug}`}
@@ -60,6 +87,9 @@ export default function Home() {
             >
               <ImageAnimation src={project.image.src} alt={project.image.alt} width={500} height={500} />
             </LinkWithDelay>
+            <div className="container-project-infos">
+              <span ref={projectsTitlesRef.current[id]}>{project.title}</span>
+            </div>
           </li>
           ))}
       </ul>
