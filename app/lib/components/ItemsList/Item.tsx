@@ -12,11 +12,11 @@ interface IProps {
 }
 
 export default function Item({ item }: IProps) {
-	const [showContent, setShowContent] = useState<boolean>(false)
+	const [showDetails, setShowDetails] = useState<boolean>(false)
 	const itemRef = useRef<HTMLLIElement>(null)
 	const containerArrowsIconsRef = useRef<HTMLDivElement>(null)
 
-	function showProjectContent() {
+	function showProjectDetails() {
 		if(!itemRef.current) return
 
 		gsap.to(itemRef.current, {
@@ -30,7 +30,7 @@ export default function Item({ item }: IProps) {
 		})
 	}
 
-	function hideProjectContent() {
+	function hideProjectDetails() {
 		if(!itemRef.current) return
 
 		gsap.to(itemRef.current, {
@@ -45,17 +45,17 @@ export default function Item({ item }: IProps) {
 	}
 
 	useEffect(() => {
-		if(showContent) {
-			showProjectContent()
+		if(showDetails) {
+			showProjectDetails()
 		} else {
-			hideProjectContent()
+			hideProjectDetails()
 		}
-	}, [showContent])
+	}, [showDetails])
 
 	return(
 		<li ref={itemRef}>
 			<div className="item-header" onClick={() => {
-					setShowContent(!showContent)
+					setShowDetails(!showDetails)
 				}}>
 				<div className="container-subtitle">
 					<span className="subtitle">Name</span>

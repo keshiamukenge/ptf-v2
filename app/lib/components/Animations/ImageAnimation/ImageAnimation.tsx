@@ -35,7 +35,7 @@ export default function ImageAnimation({ src, alt, width, height }: IProps) {
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(imgRef.current, {
-				delay: 1,
+				delay: 0.5,
 				opacity: 1,
 				duration: 0.5,
 			})

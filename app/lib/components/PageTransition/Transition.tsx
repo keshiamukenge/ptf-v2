@@ -31,6 +31,7 @@ export default function Transition() {
 
 		if (transitionState === 'finishLeave') {
 			gsap.set(darkBackground.current, {
+				delay: 0.2,
 				display: 'none',
 				opacity: 0
 			})
@@ -49,8 +50,9 @@ export default function Transition() {
 	}, [transitionState])
 
 	return (
-		<span className="container-transition" ref={transitionRef}>
+		<>
+			<span className="container-transition" ref={transitionRef}></span>
 			<span ref={darkBackground} className="dark-background"></span>
-		</span>
+		</>
 	)
 }

@@ -33,7 +33,7 @@ export default function TextAnimation({ text }: IProps) {
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(textRef.current, {
-				delay: 1,
+				delay: 0.5,
 				y: 0,
 				duration: 0.5,
 			})

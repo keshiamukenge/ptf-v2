@@ -13,7 +13,7 @@ import { Work } from '@/app/lib/types/works'
 
 export default function Works() {
 	const [works, setWorks] = useState<Work[]>([])
-	const worksPageRef = useRef<HTMLDivElement>(null)
+	const worksPageRef = useRef<HTMLDivElement | null>(null)
 	const { transitionState } = usePageTransitions()
 
 	async function getWorks() {
@@ -29,10 +29,6 @@ export default function Works() {
 
 	useEffect(() => {
 		getWorks()
-
-		setTimeout(() => {
-			console.log(works)
-		}, 3000)
 	}, [])
 
 	useEffect(() => {
