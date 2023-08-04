@@ -31,8 +31,8 @@
 				{
 					"label": "Stack",
 					"content": [
-						"Nuxt.js",
-						"Three.js",
+						"Vue.js",
+						"Trois.js",
 						"Vercel"
 					]
 				}
@@ -119,6 +119,51 @@
 				{
 					"src": "/images/projects/the-lab/4.webp",
 					"alt": "project 3"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"title": "Portfolio 2022",
+			"slug": "portfolio-2022",
+			"siteUrl": "https://www.keshiamukenge.fr/",
+			"image": {
+				"src": "/images/projects/portfolio-2022/1.webp",
+				"alt": "project 1"
+			},
+			"details": [
+				{
+					"label": "Date",
+					"content": [
+						"2022"
+					]
+				},
+				{
+					"label": "Role",
+					"content": [
+						"Developer",
+						"Designer"
+					]
+				},
+				{
+					"label": "Stack",
+					"content": [
+						"Typescript",
+						"Three.js"
+					]
+				}
+			],
+			"textsContent": [
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+			],
+			"imagesContent": [
+				{
+					"src": "/images/projects/portfolio-2022/2.webp",
+					"alt": "project 1"
+				},
+				{
+					"src": "/images/projects/portfolio-2022/3.webp",
+					"alt": "project 1"
 				}
 			]
 		}

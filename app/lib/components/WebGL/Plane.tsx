@@ -7,6 +7,7 @@ import { useLoader, extend } from '@react-three/fiber'
 import { shaderMaterial } from '@react-three/drei'
 import { PlaneGeometry, Mesh } from 'three';
 
+import { useScroll } from '../../hooks/useScroll'
 import { fragment } from './Gallery/fragmentShader'
 import { vertex } from './Gallery/vertexShader'
 
@@ -38,6 +39,7 @@ extend({ RippleShaderMaterial });
 export default function Plane({ position, args, isSelected, imageUrl }: IProps) {
   const texture = useLoader(TextureLoader, imageUrl)
 	const meshRef = useRef<Mesh>(null)
+	const scroll = useScroll()
 
 	function startWaveAnimation() {
 		if(!meshRef.current) return

@@ -26,13 +26,6 @@ export default function ImageAnimation({ src, alt, width, height }: IProps) {
 			})
 		}
 
-		// if(transitionState === 'start') {
-		// 	gsap.to(imgRef.current, {
-		// 		duration: 0.3,
-		// 		opacity: 0,
-		// 	})
-		// }
-
 		if(transitionState === 'finishLeave') {
 			gsap.to(imgRef.current, {
 				delay: 0.5,

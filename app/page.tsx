@@ -11,6 +11,7 @@ import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import Gallery from '@/app/lib/components/WebGL/Gallery/Gallery'
 import WebGLWrapper from '@/app/lib/components/WebGL/WebGLWrapper'
+// import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/ImageAnimation'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 export default function Home() {
@@ -51,15 +52,20 @@ export default function Home() {
           >
             <LinkWithDelay
               href={`/project/${project.slug}`}
-              onClick={() => setSelectedProjectId(id)} delayBeforeLeave={400} delayToStart={0}
+              onClick={() =>
+                setSelectedProjectId(id)
+              }
+              delayBeforeLeave={400}
+              delayToStart={0}
             />
+              {/* <ImageAnimation src={project.image.src} alt={project.image.alt} width={500} height={500} /> */}
           </li>
           ))}
       </ul>
       <WebGLWrapper>
         <Gallery refs={itemsRefs} />
       </WebGLWrapper>
-      <Footer fixedPosition />
+      <Footer fixedPosition={false} />
     </main>
   )
 }
