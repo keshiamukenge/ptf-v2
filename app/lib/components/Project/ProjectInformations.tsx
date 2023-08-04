@@ -1,7 +1,7 @@
 import './style.scss'
 import { Project } from '@/app/lib/types/projects'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
-import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
+import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 
 interface IProps {
 	project: Project

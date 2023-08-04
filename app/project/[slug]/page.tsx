@@ -13,7 +13,7 @@ import ProjectInformations from '@/app/lib/components/Project/ProjectInformation
 import ProjectImages from '@/app/lib/components/Project/ProjectImages'
 import Footer from '@/app/lib/components/Footer/Footer'
 import NextProject from '@/app/lib/components/Project/NextProject'
-import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
+import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
@@ -45,6 +45,8 @@ export default function ProjectPage({ params }: IProps) {
 	}, [selectedProjectId, params.slug, projects, setCurrentProject, setSelectedProjectId])
 
 	useEffect(() => {
+		if(!containerProjectContentRef.current || !containerProjectImages.current) return
+		
 		gsap.to(containerProjectContentRef.current, {
 			scrollTrigger: {
 				trigger: containerProjectImages.current,

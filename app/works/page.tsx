@@ -15,6 +15,7 @@ import { Work } from '@/app/lib/types/works'
 
 export default function Works() {
 	const [works, setWorks] = useState<Work[]>([])
+	const [footerIsFixed, setFooterIsFixed] = useState<boolean>(true)
 	const worksPageRef = useRef<HTMLDivElement | null>(null)
 	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
@@ -53,7 +54,7 @@ export default function Works() {
 				</div>
 				<ItemsList items={works} />
 			</main>
-			<Footer />
+			<Footer fixedPosition={footerIsFixed} />
 		</div>
 	)
 }

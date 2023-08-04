@@ -1,5 +1,5 @@
 import './style.scss'
-import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
+import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 
 interface IProps {
 	fixedPosition?: boolean

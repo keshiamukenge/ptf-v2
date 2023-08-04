@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 
-import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
+import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import { Work } from '@/app/lib/types/works'
 
 interface IProps {

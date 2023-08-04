@@ -37,10 +37,6 @@ export default function Home() {
 			})
 		}
 	}, [transitionState])
-
-  useEffect(() => {
-    console.log(scroll)
-  }, [scroll])
   
   return (
     <main className="home-page" ref={homePageRef}>
@@ -67,7 +63,7 @@ export default function Home() {
           </li>
           ))}
       </ul>
-      <Footer fixedPosition={false} />
+      <Footer />
     </main>
   )
 }
