@@ -30,8 +30,8 @@ export default function About() {
 		<main ref={aboutPageRef} className="about-page">
 			<div className="main-container">
 				<div className="container-image">
-					<LinkWithDelay href="/" delayBeforeLeave={1000} delayToStart={0}>
-						<ImageAnimation src="/images/about.png" alt="Keshia mukenge's picture" width={200} height={200} />
+					<LinkWithDelay href="/" delayBeforeLeave={400} delayToStart={0}>
+						<ImageAnimation src="/images/about.webp" alt="Keshia mukenge's picture" width={200} height={200} />
 					</LinkWithDelay>
 				</div>
 				<div className="container-text">

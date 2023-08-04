@@ -1,4 +1,5 @@
-// @import url('./lib/assets/scss/variables.scss');
+@import './lib/assets/scss/variables.scss';
+
 html {
   min-height: 100vh;
   width: 100vw;
@@ -7,6 +8,8 @@ html {
 body {
   text-transform: uppercase;
   height: 100%;
+  background-color: $white;
+  color: $black;
 
   h1 {
     font-size: 9vw;
@@ -18,7 +21,7 @@ body {
 
   a {
     text-decoration: none;
-    color: #000;
+    color: $black;
   }
 
   img {

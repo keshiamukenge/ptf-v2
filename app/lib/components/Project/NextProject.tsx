@@ -59,7 +59,7 @@ export default function NextProject({ project }: IProps) {
 			<LinkWithDelay
 				href={`/project/${projects[nextProjectId].slug}`}
 				onClick={() => setSelectedProjectId(projects[nextProjectId].id)}
-				delayBeforeLeave={1000}
+				delayBeforeLeave={400}
 				delayToStart={0}
 			>
 				<div className="next-project" onMouseEnter={onEnter} onMouseLeave={onLeave}>

@@ -51,7 +51,7 @@ export default function Home() {
           >
             <LinkWithDelay
               href={`/project/${project.slug}`}
-              onClick={() => setSelectedProjectId(id)} delayBeforeLeave={1000} delayToStart={0}
+              onClick={() => setSelectedProjectId(id)} delayBeforeLeave={400} delayToStart={0}
             />
           </li>
           ))}

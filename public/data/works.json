@@ -2,49 +2,46 @@
 	"projects": [
 		{
 			"id": 0,
-			"name": "Project 1",
-			"date": "2014-01-01",
-			"stack": "NUXTJS",
+			"name": "Toutou Balade",
+			"date": "2023",
+			"stack": "REACT NATIVE, FIREBASE",
 			"content": {
 				"image": null,
 				"description": "lorem ipsum dolor sit amet",
-				"link": "https://www.google.com"
+				"link": "https://github.com/keshiamukenge/tb-app"
 			}
 		},
 		{
 			"id": 1,
-			"name": "Project 1",
-			"date": "2014-01-01",
-			"stack": "NUXTJS",
+			"name": "ALTTABLE",
+			"date": "MAR 2023",
+			"stack": "TYPESCRIPT, NODEJS",
 			"content": {
-				"image": {
-					"src": "/images/projects/1.jpeg",
-					"alt": "Project 1"
-				},
+				"image": null,
 				"description": "lorem ipsum dolor sit amet",
-				"link": "https://www.google.com"
+				"link": "https://github.com/keshiamukenge/altable"
 			}
 		},
 		{
 			"id": 2,
-			"name": "Project 1",
-			"date": "2014-01-01",
-			"stack": "NUXTJS, VUEJS",
+			"name": "SPLIT IN LINES",
+			"date": "FEB 2022",
+			"stack": "TYPESCRIPT",
 			"content": {
 				"image": null,
 				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-				"link": "https://www.google.com"
+				"link": "https://github.com/keshiamukenge/split-in-lines"
 			}
 		},
 		{
 			"id": 3,
-			"name": "Project 1",
-			"date": "2014-01-01",
-			"stack": "NUXTJS",
+			"name": "THREEJS STARTER",
+			"date": "OCT 2022",
+			"stack": "TYPESCRIPT, THREEJS",
 			"content": {
 				"image": null,
 				"description": "lorem ipsum dolor sit amet",
-				"link": "https://www.google.com"
+				"link": "https://github.com/keshiamukenge/threejs-starter"
 			}
 		}
 	]

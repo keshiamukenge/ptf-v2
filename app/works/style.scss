@@ -1,3 +1,5 @@
+@import '../lib/assets/scss/variables.scss';
+
 .works-page {
   padding: 15rem 2rem 0 2rem;
   top: 8rem;
@@ -10,7 +12,7 @@
     left: 0;
     width: 100%;
     padding: 0 2rem;
-    background-color: white;
+    background-color: $white;
     z-index: 1;
 
     h1 {

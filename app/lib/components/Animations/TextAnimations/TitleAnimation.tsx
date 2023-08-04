@@ -22,16 +22,9 @@ export default function TitleAnimation({ text }: IProps) {
 			})
 		}
 
-		// if(transitionState === 'start') {
-		// 	gsap.to(titleRef.current, {
-		// 		duration: 0.3,
-		// 		opacity: 0,
-		// 	})
-		// }
-
 		if(transitionState === 'finishLeave') {
 			gsap.to(titleRef.current, {
-				delay: 1,
+				delay: 0.5,
 				duration: 0.4,
 				y: 0,
 			})

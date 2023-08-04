@@ -6,7 +6,7 @@
 			"slug": "gaggenau",
 			"siteUrl": "https://gaggenau.vercel.app/",
 			"image": {
-				"src": "/images/projects/1.jpeg",
+				"src": "/images/projects/gaggenau/1.webp",
 				"alt": "project 1"
 			},
 			"details": [
@@ -51,27 +51,23 @@
 			],
 			"imagesContent": [
 				{
-					"src": "/images/projects/1.jpeg",
+					"src": "/images/projects/gaggenau/6.webp",
 					"alt": "project 1"
 				},
 				{
-					"src": "/images/projects/1.jpeg",
+					"src": "/images/projects/gaggenau/2.webp",
+					"alt": "project 1"
+				},
+				{
+					"src": "/images/projects/gaggenau/3.webp",
 					"alt": "project 2"
 				},
 				{
-					"src": "/images/projects/1.jpeg",
+					"src": "/images/projects/gaggenau/4.webp",
 					"alt": "project 3"
 				},
 				{
-					"src": "/images/projects/1.jpeg",
-					"alt": "project 2"
-				},
-				{
-					"src": "/images/projects/1.jpeg",
-					"alt": "project 2"
-				},
-				{
-					"src": "/images/projects/1.jpeg",
+					"src": "/images/projects/gaggenau/5.webp",
 					"alt": "project 2"
 				}
 			]
@@ -82,7 +78,7 @@
 			"slug": "the-lab",
 			"siteUrl": "https://the-lab-chi.vercel.app/",
 			"image": {
-				"src": "/images/projects/2.jpeg",
+				"src": "/images/projects/the-lab/1.webp",
 				"alt": "project 2"
 			},
 			"details": [
@@ -113,15 +109,15 @@
 			],
 			"imagesContent": [
 				{
-					"src": "/images/projects/2.jpeg",
+					"src": "/images/projects/the-lab/2.webp",
 					"alt": "project 1"
 				},
 				{
-					"src": "/images/projects/2.jpeg",
+					"src": "/images/projects/the-lab/3.webp",
 					"alt": "project 2"
 				},
 				{
-					"src": "/images/projects/2.jpeg",
+					"src": "/images/projects/the-lab/4.webp",
 					"alt": "project 3"
 				}
 			]
