@@ -6,6 +6,7 @@ import Image from "next/image"
 import gsap from 'gsap'
 
 import './style.scss'
+import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
 
 interface IProps {
 	label: string
@@ -47,9 +48,11 @@ export default function InternalLink({ label, href }: IProps) {
 	return(
 		<div className="InternalLink" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 			<Image ref={arrowIconRef} src="/svg/arrow.svg" alt="arrow icon" width={20} height={20} />
-			<Link ref={linkRef} href={href}>
-				{label}
-			</Link>
+			<LinkWithDelay href={href} delayBeforeLeave={400} delayToStart={0}>
+				<span ref={linkRef} >
+					{label}
+				</span>
+			</LinkWithDelay>
 		</div>
 	)
 }

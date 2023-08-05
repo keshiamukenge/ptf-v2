@@ -5,7 +5,6 @@ import gsap from 'gsap'
 
 import './style.scss'
 import { useScroll } from '@/app/lib/hooks/useScroll'
-import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
 import Footer from "@/app/lib/components/Footer/Footer"
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import ParagraphAnimation from '@/app/lib/components/Animations/TextAnimations/ParagraphAnimation'
@@ -32,9 +31,7 @@ export default function About() {
 			<ScrollBar scrollInstance={scroll} />
 			<div className="main-container">
 				<div className="container-image">
-					<LinkWithDelay href="/" delayBeforeLeave={400} delayToStart={0}>
-						<ImageAnimation src="/images/about.webp" alt="Keshia mukenge's picture" width={200} height={200} />
-					</LinkWithDelay>
+					<ImageAnimation src="/images/about.webp" alt="Keshia mukenge's picture" width={200} height={200} />
 				</div>
 				<div className="container-text">
 					<h1>

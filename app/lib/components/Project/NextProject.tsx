@@ -7,7 +7,7 @@ import gsap from 'gsap'
 import './style.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
-import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
+import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
 import { Project } from "@/app/lib/types/projects";
 
 interface IProps {

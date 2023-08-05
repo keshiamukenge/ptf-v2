@@ -1,5 +1,5 @@
 import './style.scss'
-import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
+import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
 import LinkIsActive from '@/app/lib/components/Links/LinkIsActive'
 
 export default function Header() {

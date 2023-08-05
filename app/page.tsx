@@ -7,7 +7,7 @@ import './style.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import { useScroll } from '@/app/lib/hooks/useScroll'
 import Footer from '@/app/lib/components/Footer/Footer'
-import LinkWithDelay from '@/app/lib/components/PageTransition/LinkWithDelay'
+import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/ImageAnimation'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
@@ -48,11 +48,11 @@ export default function Home() {
 
   useEffect(() => {
     setSelectedProjectId(null)
-  }, [])
+  }, [setSelectedProjectId])
 
   useEffect(() => {
     setProjectsRefs(itemsRefs)
-  }, [itemsRefs])
+  }, [itemsRefs, setProjectsRefs])
 
   useEffect(() => {
 		if(transitionState === 'start') {
