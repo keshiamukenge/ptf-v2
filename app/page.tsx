@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, createRef, useEffect, MutableRefObject, useCallback } from 'react'
+import { useRef, createRef, useEffect, MutableRefObject, useState } from 'react'
 import gsap from 'gsap'
 
 import './style.scss'
@@ -14,37 +14,15 @@ import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 export default function Home() {
+  const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
   const { projects, setSelectedProjectId, setProjectsRefs } = useProjects()
   const { transitionState } = usePageTransitions()
   const scroll = useScroll()
   const homePageRef = useRef<HTMLElement>(null)
-  const projectsTitlesRef: MutableRefObject<MutableRefObject<HTMLSpanElement>[]> = useRef<MutableRefObject<HTMLSpanElement>[]>([])
   const itemsRefs: MutableRefObject<MutableRefObject<HTMLLIElement>[]> = useRef<MutableRefObject<HTMLLIElement>[]>([])
   itemsRefs.current = projects.map((_, i) => itemsRefs.current[i] ?? createRef());
-  projectsTitlesRef.current = projects.map((_, i) => projectsTitlesRef.current[i] ?? createRef());
-
-  const onMouseEnter = useCallback((id: number) => {
-    if(!projectsTitlesRef.current[id].current) return
-
-    gsap.to(projectsTitlesRef.current[id].current, {
-      duration: 0.5,
-      y: 0,
-    })
-  }, [])
-
-  const onMouseLeave = useCallback((id: number) => {
-    if(!projectsTitlesRef.current[id].current) return
-
-    gsap.to(projectsTitlesRef.current[id].current, {
-      duration: 0.5,
-      y: '-100%',
-      onComplete: () => {
-        gsap.set(projectsTitlesRef.current[id].current, {
-          y: '100%'
-        })
-      }
-    })
-  }, [])
+  // const imagesRefs: MutableRefObject<MutableRefObject<HTMLDivElement>[]> = useRef<MutableRefObject<HTMLDivElement>[]>([])
+  // imagesRefs.current = projects.map((_, i) => imagesRefs.current[i] ?? createRef());
 
   useEffect(() => {
     setSelectedProjectId(null)
@@ -74,8 +52,8 @@ export default function Home() {
           <li
             key={project.id}
             ref={itemsRefs.current[id]}
-            onMouseEnter={() => onMouseEnter(id)}
-            onMouseLeave={() => onMouseLeave(id)}
+            onMouseEnter={() => setHoveredProjectId(id)}
+            onMouseLeave={() => setHoveredProjectId(null)}
           >
             <LinkWithDelay
               href={`/project/${project.slug}`}
@@ -85,10 +63,16 @@ export default function Home() {
               delayBeforeLeave={400}
               delayToStart={0}
             >
-              <ImageAnimation src={project.image.src} alt={project.image.alt} width={500} height={500} />
+              <ImageAnimation
+                src={project.image.src}
+                alt={project.image.alt}
+                width={500}
+                height={500}
+                isHovered={id === hoveredProjectId}
+              />
             </LinkWithDelay>
             <div className="container-project-infos">
-              <span ref={projectsTitlesRef.current[id]}>{project.title}</span>
+              <span>{project.title}</span>
             </div>
           </li>
           ))}

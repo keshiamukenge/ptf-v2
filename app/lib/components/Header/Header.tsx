@@ -6,7 +6,7 @@ export default function Header() {
 	return(
 		<header>
 			<LinkWithDelay additionalClassName="home-link" href="/" delayBeforeLeave={400} delayToStart={0}>Keshia Mukenge</LinkWithDelay>
-			<span className="job">Web Developer - Front End</span>
+			<span className="job">Web Developer - Front-end</span>
 			<LinkIsActive additionalClassName="selected-works-link" path="/">
 				<LinkWithDelay href="/" delayBeforeLeave={400} delayToStart={0}>
 					Selected Works
