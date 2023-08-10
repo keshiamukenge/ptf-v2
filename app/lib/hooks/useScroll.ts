@@ -24,7 +24,6 @@ export function useScroll() {
 		lenis.on('scroll', ScrollTrigger.update)
 	}, []);
 
-
 	useEffect(() => {
 		return () => {
 			instance?.destroy()

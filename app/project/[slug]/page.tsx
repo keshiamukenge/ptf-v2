@@ -16,6 +16,7 @@ import NextProject from '@/app/lib/components/Project/NextProject'
 import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
+// import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 interface IProps {
@@ -96,7 +97,7 @@ export default function ProjectPage({ params }: IProps) {
 							text={
 								<ExternalLink label="View site" href={currentProject.siteUrl} />
 							}
-						/>
+							/>
 					</div>
 				</div>
 				<div className="container-project-images" ref={containerProjectImages}>

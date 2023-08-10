@@ -9,6 +9,8 @@ header {
   top: 0;
   left: 0;
   z-index: 999;
+  opacity: 0;
+  transform: translateY(-0.5rem);
 
   .home-link {
     grid-column: 1 / 3;

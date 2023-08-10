@@ -9,6 +9,7 @@ import ItemsList from '@/app/lib/components/ItemsList/ItemsList'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import Footer from '@/app/lib/components/Footer/Footer'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
+import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { getWorksServices } from '@/app/lib/services/projects'
 import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
 import { Work } from '@/app/lib/types/works'
@@ -44,17 +45,19 @@ export default function Works() {
 	}, [transitionState])
 
 	return(
-		<div>
-			<main ref={worksPageRef} className="works-page">
-				<ScrollBar scrollInstance={scroll} />
-				<div className="container-page-title">
-					<h1>
-						<TitleAnimation text="Works" />
-					</h1>
-				</div>
-				<ItemsList items={works} />
-			</main>
-			<Footer fixedPosition={footerIsFixed} />
-		</div>
+		<LoaderWrapper>
+			<div>
+				<main ref={worksPageRef} className="works-page">
+					<ScrollBar scrollInstance={scroll} />
+					<div className="container-page-title">
+						<h1>
+							<TitleAnimation text="Works" />
+						</h1>
+					</div>
+					<ItemsList items={works} />
+				</main>
+				<Footer fixedPosition={footerIsFixed} />
+			</div>
+		</LoaderWrapper>
 	)
 }

@@ -7,6 +7,7 @@ import Transition from '@/app/lib/components/PageTransition/Transition'
 import PageTransitionWrapper from '@/app/lib/components/PageTransition/PageTransitionWrapper'
 import Header from '@/app/lib/components/Header/Header'
 import { ProjectsProvider } from '@/app/lib/providers/ProjectsContext'
+import { LoaderProvider } from '@/app/lib/providers/LoaderContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +22,15 @@ export default function RootLayout(props: {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ProjectsProvider>
-          <PageTransitionWrapper>
-            <Header />
-            {props.children}
-            <Transition />
-          </PageTransitionWrapper>
-        </ProjectsProvider>
+        <LoaderProvider>
+          <ProjectsProvider>
+            <PageTransitionWrapper>
+              <Header />
+              {props.children}
+              <Transition />
+            </PageTransitionWrapper>
+          </ProjectsProvider>
+        </LoaderProvider>
       </body>
     </html>
   )
