@@ -33,9 +33,9 @@ export default function Header() {
 					Selected Works
 				</LinkWithDelay>
 			</LinkIsActive>
-			<LinkIsActive additionalClassName="works-link" path="/works">
-				<LinkWithDelay href="/works" delayBeforeLeave={400} delayToStart={0}>
-					Works
+			<LinkIsActive additionalClassName="archives-link" path="/archives">
+				<LinkWithDelay href="/archives" delayBeforeLeave={400} delayToStart={0}>
+					Archives
 				</LinkWithDelay>
 			</LinkIsActive>
 			<LinkIsActive additionalClassName="about-link" path="/about">

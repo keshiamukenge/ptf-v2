@@ -8,11 +8,20 @@
     padding: 0 0.5rem;
     height: 5rem;
     overflow: hidden;
+    transition: 200ms linear background-color;
+
+    &:hover {
+      background-color: #ede8de;
+    }
 
     .item-header {
       display: grid;
       grid-template-columns: 31% 31% 31% auto;
       padding: 1.5rem 0;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       .container-subtitle {
         display: flex;
@@ -21,12 +30,13 @@
 
         .subtitle {
           display: block;
-          font-weight: 500;
           margin-bottom: 0.5rem;
+          color: $gray-100;
         }
 
         .content {
           font-size: 0.8rem;
+          font-weight: 500;
         }
       }
 
@@ -79,9 +89,9 @@
 
         .description-label {
           display: block;
-          font-weight: 500;
           margin-bottom: 0.5rem;
           font-size: 1rem;
+          color: $gray-100;
         }
       }
 

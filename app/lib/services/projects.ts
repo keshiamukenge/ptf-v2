@@ -1,7 +1,7 @@
 'use server'
 
 import { Project } from '@/app/lib/types/projects'
-import { Work } from '@/app/lib/types/works'
+import { Work } from '@/app/lib/types/archive'
 
 export async function getSelectedWorksServices(): Promise<Project[]> {
 	const response = await fetch('http://localhost:3000/data/selectedWorks.json')

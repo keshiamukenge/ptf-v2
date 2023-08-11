@@ -6,10 +6,10 @@ import gsap from 'gsap'
 
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 import ExternalLink from '@/app/lib/components/Links/ExternalLink'
-import { Work } from '@/app/lib/types/works'
+import { Archive } from '@/app/lib/types/archive'
 
 interface IProps {
-	item: Work
+	item: Archive
 }
 
 export default function Item({ item }: IProps) {

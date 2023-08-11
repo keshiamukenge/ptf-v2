@@ -12,12 +12,12 @@ import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { getWorksServices } from '@/app/lib/services/projects'
 import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
-import { Work } from '@/app/lib/types/works'
+import { Archive } from '@/app/lib/types/archive'
 
-export default function Works() {
-	const [works, setWorks] = useState<Work[]>([])
+export default function Archives() {
+	const [archives, setArchives] = useState<Archive[]>([])
 	const [footerIsFixed, setFooterIsFixed] = useState<boolean>(true)
-	const worksPageRef = useRef<HTMLDivElement | null>(null)
+	const archivesPageRef = useRef<HTMLDivElement | null>(null)
 	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
 
@@ -25,7 +25,7 @@ export default function Works() {
 		try {
 			const result = await getWorksServices()
 
-			setWorks(result)
+			setArchives(result)
 		} catch (error) {
 			console.log(error)
 		}
@@ -37,7 +37,7 @@ export default function Works() {
 
 	useEffect(() => {
 		if(transitionState === 'start') {
-			gsap.to(worksPageRef.current, {
+			gsap.to(archivesPageRef.current, {
 				duration: 0.5,
 				y: -100,
 			})
@@ -47,14 +47,14 @@ export default function Works() {
 	return(
 		<LoaderWrapper>
 			<div>
-				<main ref={worksPageRef} className="works-page">
+				<main ref={archivesPageRef} className="archives-page">
 					<ScrollBar scrollInstance={scroll} />
 					<div className="container-page-title">
 						<h1>
-							<TitleAnimation text="Works" />
+							<TitleAnimation text="Archives" />
 						</h1>
 					</div>
-					<ItemsList items={works} />
+					<ItemsList items={archives} />
 				</main>
 				<Footer fixedPosition={footerIsFixed} />
 			</div>
