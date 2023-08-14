@@ -10,7 +10,7 @@ import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/Title
 import Footer from '@/app/lib/components/Footer/Footer'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
-import { getWorksServices } from '@/app/lib/services/projects'
+import { getArchivesServices } from '@/app/lib/services/projects'
 import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
 import { Archive } from '@/app/lib/types/archive'
 
@@ -23,7 +23,7 @@ export default function Archives() {
 
 	async function getWorks() {
 		try {
-			const result = await getWorksServices()
+			const result = await getArchivesServices()
 
 			setArchives(result)
 		} catch (error) {

@@ -24,11 +24,12 @@ const LoaderContext = createContext<LoaderContextType>({
 
 function LoaderProvider({ children }: IProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const loadingDuration = 4000
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, 4000)
+    }, loadingDuration)
   }, [])
 
   const value = useMemo(() => {

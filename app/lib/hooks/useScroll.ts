@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export function useScroll() {
-	const [instance, setInstance] = useState<undefined | Lenis>(undefined)
+	const [instance, setInstance] = useState<undefined | Lenis>()
 	gsap.registerPlugin(ScrollTrigger)
 	
 	const raf = useCallback((time: number) => {
