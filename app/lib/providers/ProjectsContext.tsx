@@ -42,7 +42,7 @@ const ProjectsContext = createContext<ProjectsContextType>({
 function ProjectsProvider({ children }: IProps) {
   const [projects, setProjects] = useState<Project[]>([])
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null)
-  const [projectsRefs, setProjectsRefs] = useState<MutableRefObject<React.MutableRefObject<HTMLLIElement>[]>>(null)
+  const [projectsRefs, setProjectsRefs] = useState<MutableRefObject<React.MutableRefObject<HTMLLIElement>[]> | null>(null)
   const [nextProjectId, setNextProjectId] = useState<number | null>(null)
 
   const getSelectedProjects = useCallback(async () => {

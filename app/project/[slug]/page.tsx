@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 
 import './style.scss'
-import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import { useScroll } from '@/app/lib/hooks/useScroll'
+import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
 import ParagraphAnimation from '@/app/lib/components/Animations/TextAnimations/ParagraphAnimation'
 import { Project } from '@/app/lib/types/projects'
@@ -13,9 +13,12 @@ import ProjectInformations from '@/app/lib/components/Project/ProjectInformation
 import ProjectImages from '@/app/lib/components/Project/ProjectImages'
 import Footer from '@/app/lib/components/Footer/Footer'
 import NextProject from '@/app/lib/components/Project/NextProject'
-import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
+import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
+import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
+// import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { useResponsive } from '@/app/lib/hooks/useResponsive'
 
 interface IProps {
 	params: {
@@ -29,8 +32,9 @@ export default function ProjectPage({ params }: IProps) {
 	const { transitionState } = usePageTransitions()
 	const containerProjectContentRef = useRef<HTMLDivElement | null>(null)
 	const projectPageRef = useRef<HTMLElement>(null)
-	const scroll = useScroll()
 	const containerProjectImages = useRef<HTMLDivElement | null>(null)
+	const scroll = useScroll()
+	const device = useResponsive()
 
 	useEffect(() => {
 		projects.forEach(project => {
@@ -44,17 +48,21 @@ export default function ProjectPage({ params }: IProps) {
 	}, [selectedProjectId, params.slug, projects, setCurrentProject, setSelectedProjectId])
 
 	useEffect(() => {
-		gsap.to(containerProjectContentRef.current, {
-			scrollTrigger: {
-				trigger: containerProjectImages.current,
-				start: 'bottom +=100%',
-				end: 'bottom -=100%',
-				scrub: true,
-			},
-			y: "-200vh",
-			ease: 'none',
-		})
-	})
+		if(!containerProjectContentRef.current || !containerProjectImages.current) return
+		
+		if(device === 'desktop') {
+			gsap.to(containerProjectContentRef.current, {
+				scrollTrigger: {
+					trigger: containerProjectImages.current,
+					start: 'bottom +=100%',
+					end: 'bottom -=100%',
+					scrub: true,
+				},
+				y: "-200vh",
+				ease: 'none',
+			})
+		}
+	}, [device])
 
 	useEffect(() => {
 		if(transitionState === 'start') {
@@ -72,6 +80,7 @@ export default function ProjectPage({ params }: IProps) {
 	return (
 		<>
 			<main ref={projectPageRef} className="project-page">
+				<ScrollBar scrollInstance={scroll}/>
 				<div ref={containerProjectContentRef} className="container-project-content">
 					<h1>
 						<TitleAnimation text={currentProject.title}/>
@@ -92,7 +101,7 @@ export default function ProjectPage({ params }: IProps) {
 							text={
 								<ExternalLink label="View site" href={currentProject.siteUrl} />
 							}
-						/>
+							/>
 					</div>
 				</div>
 				<div className="container-project-images" ref={containerProjectImages}>

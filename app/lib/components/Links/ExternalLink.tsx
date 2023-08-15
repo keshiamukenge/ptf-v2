@@ -14,9 +14,10 @@ interface IProps {
 export default function ExternalLink({ label, href }: IProps) {
 	const firstArrowIconRef = useRef<HTMLImageElement>(null)
 	const secondArrowIconRef = useRef<HTMLImageElement>(null)
-	const timeline = gsap.timeline({ duration: 0.4 })
 
 	function onEnter() {
+		if(!firstArrowIconRef.current || !secondArrowIconRef.current) return
+		
 		gsap.to(firstArrowIconRef.current, {
 			x: '+=100%', 
 			y: '-=100%',

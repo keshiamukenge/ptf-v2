@@ -4,17 +4,20 @@ import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 
-import ExternalLink from '@/app/lib/components/ExternalLink/ExternalLink'
-import { Work } from '@/app/lib/types/works'
+import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
+import ExternalLink from '@/app/lib/components/Links/ExternalLink'
+import { Archive } from '@/app/lib/types/archive'
 
 interface IProps {
-	item: Work
+	item: Archive
 }
 
 export default function Item({ item }: IProps) {
 	const [showDetails, setShowDetails] = useState<boolean>(false)
 	const itemRef = useRef<HTMLLIElement>(null)
 	const containerArrowsIconsRef = useRef<HTMLDivElement>(null)
+	const containerArrowsIcons = useRef<HTMLDivElement>(null)
+	const borderRef = useRef<HTMLSpanElement>(null)
 
 	function showProjectDetails() {
 		if(!itemRef.current) return
@@ -35,7 +38,7 @@ export default function Item({ item }: IProps) {
 
 		gsap.to(itemRef.current, {
 			duration: 0.5,
-			height: 85
+			height: '5rem'
 		})
 
 		gsap.to(containerArrowsIconsRef.current, {
@@ -52,31 +55,57 @@ export default function Item({ item }: IProps) {
 		}
 	}, [showDetails])
 
+	useEffect(() => {
+		if(!containerArrowsIcons.current) return
+
+		gsap.to(containerArrowsIcons.current, {
+			opacity: 1,
+			duration: 0.3,
+		})
+
+		gsap.to(borderRef.current, {
+			delay: 0.4,
+			width: '100%',
+			duration: 0.5,
+		})
+	}, [containerArrowsIcons, borderRef])
+
 	return(
 		<li ref={itemRef}>
 			<div className="item-header" onClick={() => {
 					setShowDetails(!showDetails)
 				}}>
 				<div className="container-subtitle">
-					<span className="subtitle">Name</span>
-					<span className="content">{item.name}</span>
+					<span className="subtitle">
+						<TextAnimation text="Name"/>
+					</span>
+					<span className="content">
+						<TextAnimation text={item.name} />
+					</span>
+				</div>
+				<div className="container-subtitle container-date">
+					<span className="subtitle">
+						<TextAnimation text="Date"/>
+					</span>
+					<span className="content">
+						<TextAnimation text={item.date} />
+					</span>
 				</div>
 				<div className="container-subtitle">
-					<span className="subtitle">Date</span>
-					<span className="content">{item.date}</span>
+					<span className="subtitle">
+						<TextAnimation text="Stack"/>
+					</span>
+					<span className="content">
+						<TextAnimation text={item.stack} />
+					</span>
 				</div>
-				<div className="container-subtitle">
-					<span className="subtitle">Stack</span>
-					<span className="content">{item.stack}</span>
-				</div>
-				<div className="container-arrows-icons">
+				<div ref={containerArrowsIcons} className="container-arrows-icons">
 					<div className="container-content" ref={containerArrowsIconsRef}>
 						<Image className="arrow-up" src="/svg/arrow.svg" alt="arrow icon" width={30} height={30} />
 						<Image className="arrow-back" src="/svg/arrow.svg" alt="arrow icon" width={30} height={30} />
 					</div>
 				</div>
 			</div>
-			
 			<div className="item-content">
 				{item.content?.image && (
 					<div className="container-image">
@@ -91,6 +120,7 @@ export default function Item({ item }: IProps) {
 					<ExternalLink label="View project" href={item.content.link} />
 				</div>
 			</div>
+			<span ref={borderRef} className="border"></span>
 		</li>
 	)
 }

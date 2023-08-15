@@ -1,4 +1,4 @@
-export interface Work {
+export interface Archive {
 	id: number;
 	name: string;
 	date: string;

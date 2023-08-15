@@ -1,7 +1,19 @@
+@import '../../assets/scss/variables.scss';
+
 footer {
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+
+  @include onTabletAndMobile {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  @include onMobile {
+    align-items: center;
+  }
 
   &.fixed {
     position: fixed;
@@ -12,5 +24,9 @@ footer {
 
   .copyright {
     font-size: 12px;
+
+    @include onMobile {
+      font-size: 8px;
+    }
   }
 }

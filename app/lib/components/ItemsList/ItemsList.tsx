@@ -1,9 +1,9 @@
 import './style.scss'
 import Item from './Item'
-import { Work } from '@/app/lib/types/works'
+import { Archive } from '@/app/lib/types/archive'
 
 interface IProps {
-	items: Work[]
+	items: Archive[]
 }
 
 export default function ItemsList({ items }: IProps) {

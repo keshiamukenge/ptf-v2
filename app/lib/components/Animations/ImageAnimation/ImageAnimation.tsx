@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, RefObject } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 import BasicImage from "./BasicImage";
@@ -11,12 +11,28 @@ interface IProps {
 	alt: string;
 	width: number;
 	height: number;
-	parallax?: boolean;
+	isHovered?: boolean;
 }
 
-export default function ImageAnimation({ src, alt, width, height }: IProps) {
+export default function ImageAnimation({ src, alt, width, height, isHovered }: IProps) {
 	const imgRef = useRef<HTMLImageElement>(null);
 	const { transitionState } = usePageTransitions();
+
+	useEffect(() => {
+		if(!imgRef.current) return
+
+		if(isHovered) {
+			gsap.to(imgRef.current, {
+				duration: 1,
+				scale: 1.05,
+			})
+		} else {
+			gsap.to(imgRef.current, {
+				duration: 1,
+				scale: 1,
+			})
+		}
+	}, [isHovered])
 
 	useEffect(() => {
 		if(!transitionState) {
@@ -25,13 +41,6 @@ export default function ImageAnimation({ src, alt, width, height }: IProps) {
 				duration: 0.8,
 			})
 		}
-
-		// if(transitionState === 'start') {
-		// 	gsap.to(imgRef.current, {
-		// 		duration: 0.3,
-		// 		opacity: 0,
-		// 	})
-		// }
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(imgRef.current, {

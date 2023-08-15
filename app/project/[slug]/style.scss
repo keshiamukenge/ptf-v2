@@ -1,9 +1,19 @@
+@import '../../lib/assets/scss/variables.scss';
+
 .project-page {
   padding: 0 2rem;
+
+  @include onTabletAndMobile {
+    padding: 0 1rem;
+  }
 
   .container-project-content {
     position: fixed;
     top: 2rem;
+
+    @include onTabletAndMobile {
+      position: initial;
+    }
 
     h1 {
       margin-top: 5rem;
@@ -12,8 +22,16 @@
     .container-project-text {
       width: 40%;
 
+      @include onTabletAndMobile {
+        width: 100%;
+      }
+
       p {
         font-size: 16px;
+
+        @include onTablet {
+          width: 60%;
+        }
 
         span {
           span {
@@ -31,8 +49,14 @@
   .container-project-images {
     width: 50%;
     margin-left: auto;
-    margin-top: 8rem;
+    margin-top: 13rem;
     margin-bottom: 8rem;
+
+    @include onTabletAndMobile {
+      width: 100%;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
 
     img {
       height: auto;

@@ -31,8 +31,8 @@
 				{
 					"label": "Stack",
 					"content": [
-						"Nuxt.js",
-						"Three.js",
+						"Vuejs",
+						"Troisjs",
 						"Vercel"
 					]
 				}
@@ -47,7 +47,7 @@
 				]
 			},
 			"textsContent": [
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+				"For this fictional project, I reached out to designer Maria Sheveleva via Behance with the aim of bringing her redesign proposal to life for the Gaggenau website. This company is renowned for its expertise in luxury kitchen appliances. Due to time constraints, I was able to create only the homepage of the website. Nonetheless, this experience enabled me to enhance my programming skills while directly collaborating with a designer."
 			],
 			"imagesContent": [
 				{
@@ -105,7 +105,7 @@
 				}
 			],
 			"textsContent": [
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+				"The Lab, as implied by its name, serves as an online laboratory where I engage in experimenting with effects using Webgl. This approach allows me, on one hand, to continuously push the boundaries of my utilization of this technology that I hold in high regard. On the other hand, it provides me with the opportunity to showcase a glimpse of my skills in the field of 3D on the web."
 			],
 			"imagesContent": [
 				{
@@ -119,6 +119,51 @@
 				{
 					"src": "/images/projects/the-lab/4.webp",
 					"alt": "project 3"
+				}
+			]
+		},
+		{
+			"id": 2,
+			"title": "Portfolio 2022",
+			"slug": "portfolio-2022",
+			"siteUrl": "https://www.keshiamukenge.fr/",
+			"image": {
+				"src": "/images/projects/portfolio-2022/1.webp",
+				"alt": "project 1"
+			},
+			"details": [
+				{
+					"label": "Date",
+					"content": [
+						"2022"
+					]
+				},
+				{
+					"label": "Role",
+					"content": [
+						"Developer",
+						"Designer"
+					]
+				},
+				{
+					"label": "Stack",
+					"content": [
+						"Typescript",
+						"Three.js"
+					]
+				}
+			],
+			"textsContent": [
+				"Here is my previous portfolio, crafted between 2021 and 2022."
+			],
+			"imagesContent": [
+				{
+					"src": "/images/projects/portfolio-2022/2.webp",
+					"alt": "project 1"
+				},
+				{
+					"src": "/images/projects/portfolio-2022/3.webp",
+					"alt": "project 1"
 				}
 			]
 		}

@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export function useScroll() {
-	const [instance, setInstance] = useState<undefined | Lenis>(undefined)
-	gsap.registerPlugin(ScrollTrigger)
+	const [instance, setInstance] = useState<undefined | Lenis>()
 	
-	function raf(time: number) {
+	const raf = useCallback((time: number) => {
 		if(!instance) return
 		
 		gsap.ticker.add((time)=>{
@@ -15,14 +14,15 @@ export function useScroll() {
 		})
 		
 		gsap.ticker.lagSmoothing(0)
-	}
+	}, [instance])
 	
 	useEffect(() => {
 		const lenis = new Lenis()
+		gsap.registerPlugin(ScrollTrigger)
 		setInstance(lenis)
+
 		lenis.on('scroll', ScrollTrigger.update)
 	}, []);
-
 
 	useEffect(() => {
 		return () => {
@@ -32,7 +32,7 @@ export function useScroll() {
 	
 	useEffect(() => {
 		requestAnimationFrame(raf)
-	}, [instance])
+	}, [instance, raf])
 
 	return instance;
 }

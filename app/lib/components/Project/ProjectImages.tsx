@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 import "./style.scss"
 import { ProjectImage } from "@/app/lib/types/projects"
 import ImageAnimation from "@/app/lib/components/Animations/ImageAnimation/ImageAnimation"
@@ -19,7 +17,6 @@ export default function ProjectImages({ images }: IProps) {
 						alt={image.alt}
 						width={400}
 						height={400}
-						parallax={true}
 					/>
 				</li>
 			))}

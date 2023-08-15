@@ -1,18 +1,23 @@
+@import '../../assets/scss/variables.scss';
+
 .items-list {
   margin-bottom: 5rem;
 
   li {
-    border-top: 1px solid black;
+    position: relative;
     padding: 0 0.5rem;
-    height: 3rem;
+    height: 5rem;
     overflow: hidden;
+    transition: 200ms linear background-color;
 
-    &:first-child {
-      margin-top: 2rem;
+    &:hover {
+      background-color: #ede8de;
     }
 
-    &:last-child {
-      border-bottom: 1px solid black;
+    @include onMobile {
+      &:hover {
+        background-color: transparent;
+      }
     }
 
     .item-header {
@@ -20,19 +25,38 @@
       grid-template-columns: 31% 31% 31% auto;
       padding: 1.5rem 0;
 
+      @include onMobile {
+        grid-template-columns: 40% 40% 20%;
+        gap: 2rem 0;
+        padding: 1rem 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
       .container-subtitle {
         display: flex;
         flex-direction: column;
         padding-right: 2rem;
 
+        @include onMobile {
+          padding-right: 0;
+
+          &.container-date {
+            padding-left: 2rem;
+          }
+        }
+
         .subtitle {
           display: block;
-          font-weight: 500;
           margin-bottom: 0.5rem;
+          color: $gray-100;
         }
 
         .content {
           font-size: 0.8rem;
+          font-weight: 500;
         }
       }
 
@@ -41,6 +65,12 @@
         height: 1.2rem;
         margin-left: auto;
         overflow: hidden;
+        opacity: 0;
+
+        @include onMobile {
+          grid-row: 1;
+          grid-column: 3;
+        }
 
         &:hover {
           cursor: pointer;
@@ -73,6 +103,12 @@
       height: fit-content;
       grid-template-columns: 31% 31% 31% auto;
 
+      @include onMobile {
+        grid-template-columns: 40% 40% 20%;
+        gap: 2rem 0;
+        margin-top: 1rem;
+      }
+
       .container-image {
         width: 60%;
         height: 250px;
@@ -82,18 +118,43 @@
         padding-right: 2rem;
         font-size: 0.8rem;
 
+        @include onMobile {
+          grid-column: 1 / span 3;
+          grid-row: 2;
+        }
+
+        @include onTablet {
+          grid-column: 1 / span 2;
+          padding-right: 5rem;
+        }
+
         .description-label {
           display: block;
-          font-weight: 500;
           margin-bottom: 0.5rem;
           font-size: 1rem;
+          color: $gray-100;
         }
       }
 
       .project-link {
         width: fit-content;
         grid-column: 3;
+
+        @include onMobile {
+          grid-column: 1 / span 2;
+          grid-row: 1;
+        }
       }
     }
+  }
+
+  .border {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $black;
   }
 }

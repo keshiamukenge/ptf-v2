@@ -1,0 +1,48 @@
+{
+	"projects": [
+		{
+			"id": 0,
+			"name": "Toutou Balade",
+			"date": "2023",
+			"stack": "REACT NATIVE, FIREBASE",
+			"content": {
+				"image": null,
+				"description": "During my academic journey, I developed a mobile application centered around shared dog-walking experiences. The core idea of this application was to provide users with diverse route options, offering suggestions for walks to be undertaken with their canine companions. These routes encompassed both immediate surroundings and the opportunity to explore the city's heritage. For the creation of this application, I leveraged Google's API. This enabled users to visualize routes, craft their own paths, and save them. Additionally, I integrated the phone's geolocation system to provide an optimized navigation experience.",
+				"link": "https://github.com/keshiamukenge/tb-app"
+			}
+		},
+		{
+			"id": 1,
+			"name": "ALTTABLE",
+			"date": "MAR 2023",
+			"stack": "TYPESCRIPT, NODEJS",
+			"content": {
+				"image": null,
+				"description": "I contributed to the development of a specific section of a Node.js API. This initiative was undertaken within the context of a course focused on microservices.",
+				"link": "https://github.com/keshiamukenge/altable"
+			}
+		},
+		{
+			"id": 2,
+			"name": "SPLIT IN LINES",
+			"date": "FEB 2022",
+			"stack": "TYPESCRIPT",
+			"content": {
+				"image": null,
+				"description": "This is an NPM package designed to divide each line of text into separate HTML tags, facilitating their subsequent animation. This package is employed on this website.",
+				"link": "https://github.com/keshiamukenge/split-in-lines"
+			}
+		},
+		{
+			"id": 3,
+			"name": "THREEJS STARTER",
+			"date": "OCT 2022",
+			"stack": "TYPESCRIPT, THREEJS",
+			"content": {
+				"image": null,
+				"description": "This project serves as a reference for me when I aim to quickly establish a ThreeJS environment. I continue to refine it over time.",
+				"link": "https://github.com/keshiamukenge/threejs-starter"
+			}
+		}
+	]
+}
