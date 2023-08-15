@@ -16,15 +16,31 @@
 
   .container-projects {
     width: 100%;
-    padding: 0 7rem;
+    padding: 0 6rem;
     display: grid;
     gap: 6rem 2rem;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 5rem;
 
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      padding: 4rem;
+    }
+
+    @include onMobile {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
     li {
       width: 100%;
       height: 30rem;
+
+      @include onMobile {
+        height: 20rem;
+      }
 
       a {
         width: 100%;

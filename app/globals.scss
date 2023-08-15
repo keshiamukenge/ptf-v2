@@ -5,6 +5,7 @@ html {
   width: 100vw;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  max-width: $max-width;
 
   &::-webkit-scrollbar {
     display: none;
@@ -16,6 +17,7 @@ body {
   height: 100%;
   background-color: $white;
   color: $black;
+  max-width: $max-width;
 
   h1 {
     font-size: 9vw;
