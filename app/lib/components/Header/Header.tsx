@@ -71,7 +71,7 @@ export default function Header() {
 			{device !== 'mobile' ? (
 				<div className="desktop-menu">
 					<LinkWithDelay additionalClassName="home-link" href="/" delayBeforeLeave={400} delayToStart={0}>Keshia Mukenge</LinkWithDelay>
-					<span className="job">Web Developer - Front-end</span>
+					<span className="job">Web Developer | Front-end</span>
 					<LinkIsActive additionalClassName="selected-works-link" path="/">
 						<LinkWithDelay href="/" delayBeforeLeave={400} delayToStart={0}>
 							Selected Works
@@ -92,12 +92,14 @@ export default function Header() {
 				<div className="mobile-menu">
 					<div className="head">
 						<LinkWithDelay additionalClassName="home-link" href="/" delayBeforeLeave={400} delayToStart={0}>KM</LinkWithDelay>
+						<span className="job">Web Developer  <br /> Front-end</span>
 						<span className="open-menu-button" onClick={() => setMobileMenuIsOpen(true)}>Menu</span>
 					</div>
 					<div ref={mobileMenuContentRef} className="content">
 						<div className="container-content">
 							<div className="content-head">
 								<span className="home-link">KM</span>
+								<span className="job">Web Developer  <br /> Front-end</span>
 								<span className="close-menu-button" onClick={() => setMobileMenuIsOpen(false)}>Close</span>
 							</div>
 							<div className="containers-links">

@@ -83,7 +83,7 @@ export default function Item({ item }: IProps) {
 						<TextAnimation text={item.name} />
 					</span>
 				</div>
-				<div className="container-subtitle">
+				<div className="container-subtitle container-date">
 					<span className="subtitle">
 						<TextAnimation text="Date"/>
 					</span>

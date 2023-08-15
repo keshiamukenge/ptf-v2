@@ -56,10 +56,6 @@ header {
       display: flex;
       display: inline-block;
       margin-left: auto;
-
-      @include onTablet {
-        grid-column: 11;
-      }
     }
 
     .about-link {
@@ -83,6 +79,16 @@ header {
       padding: 1rem;
       width: 100%;
       height: fit-content;
+
+      .job {
+        text-align: center;
+        font-size: 0.8rem;
+        position: absolute;
+        top: 31px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $black;
+      }
 
       .open-menu-button {
         &:hover {
@@ -116,6 +122,17 @@ header {
           width: 100%;
           display: flex;
           justify-content: space-between;
+          align-items: center;
+
+          .job {
+            text-align: center;
+            font-size: 0.8rem;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $white;
+          }
 
           .close-menu-button {
             &:hover {
