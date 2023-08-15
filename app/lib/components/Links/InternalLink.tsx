@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef, useCallback } from 'react'
-import Link from "next/link"
 import Image from "next/image"
 import gsap from 'gsap'
 
