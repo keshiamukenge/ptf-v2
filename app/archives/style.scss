@@ -22,9 +22,15 @@
     padding: 0 2rem;
     background-color: $white;
     z-index: 1;
+    max-width: $max-width;
 
     @include onMobile {
       padding: 0 1rem;
+    }
+
+    @include onLargeDesktop {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     h1 {
