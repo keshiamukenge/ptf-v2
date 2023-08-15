@@ -31,6 +31,10 @@
       display: block;
       overflow: hidden;
 
+      @include onMobile {
+        top: 75%;
+      }
+
       .progress {
         color: $white;
         width: 100%;

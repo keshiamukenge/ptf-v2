@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 
 import './style.scss'
+import { useResponsive } from '@/app/lib/hooks/useResponsive'
 
 interface IProps {
 	children: React.ReactNode
@@ -17,15 +18,20 @@ export default function LinkIsActive({ children, additionalClassName, path, onCl
 	const underlineRef = useRef<HTMLDivElement>(null)
 	const containerLinkRef = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
+	const device = useResponsive()
 
 	const handleMouseEnter = useCallback(() => {
+		if(device === 'mobile' || device === 'tablet') return
+
 		gsap.to(underlineRef.current, {
 			duration: 0.3,
 			x: 0
 		})
-	}, [])
+	}, [device])
 
 	const handleMouseLeave = useCallback(() => {
+		if(device === 'mobile' || device === 'tablet') return
+
 		gsap.to(underlineRef.current, {
 			duration: 0.3,
 			x: '100%',
@@ -35,7 +41,7 @@ export default function LinkIsActive({ children, additionalClassName, path, onCl
 				})
 			}
 		})
-	}, [])
+	}, [device])
 
 	useEffect(() => {
 		if(!containerLinkRef.current) return

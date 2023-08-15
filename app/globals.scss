@@ -6,6 +6,7 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
   max-width: $max-width;
+  background-color: $white;
 
   &::-webkit-scrollbar {
     display: none;
@@ -18,6 +19,10 @@ body {
   background-color: $white;
   color: $black;
   max-width: $max-width;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   h1 {
     font-size: 9vw;
