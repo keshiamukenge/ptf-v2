@@ -6,10 +6,13 @@ footer {
   justify-content: space-between;
   align-items: baseline;
 
-  @include onMobile {
-    gap: 1rem;
-    align-items: center;
+  @include onTabletAndMobile {
     padding: 1rem;
+    gap: 1rem;
+  }
+
+  @include onMobile {
+    align-items: center;
   }
 
   &.fixed {

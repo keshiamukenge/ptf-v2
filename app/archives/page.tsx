@@ -21,7 +21,7 @@ export default function Archives() {
 	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
 
-	async function getWorks() {
+	async function getArchives() {
 		try {
 			const result = await getArchivesServices()
 
@@ -32,7 +32,7 @@ export default function Archives() {
 	}
 
 	useEffect(() => {
-		getWorks()
+		getArchives()
 	}, [])
 
 	useEffect(() => {

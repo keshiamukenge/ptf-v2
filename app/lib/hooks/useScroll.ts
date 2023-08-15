@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export function useScroll() {
 	const [instance, setInstance] = useState<undefined | Lenis>()
-	gsap.registerPlugin(ScrollTrigger)
 	
 	const raf = useCallback((time: number) => {
 		if(!instance) return
@@ -19,6 +18,7 @@ export function useScroll() {
 	
 	useEffect(() => {
 		const lenis = new Lenis()
+		gsap.registerPlugin(ScrollTrigger)
 		setInstance(lenis)
 
 		lenis.on('scroll', ScrollTrigger.update)
