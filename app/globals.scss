@@ -25,6 +25,14 @@ body {
 
   h2 {
     font-size: 5rem;
+
+    @include onTablet {
+      font-size: 7vw;
+    }
+
+    @include onMobile {
+      font-size: 2rem;
+    }
   }
 
   a {

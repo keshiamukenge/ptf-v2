@@ -8,6 +8,10 @@
   grid-gap: 2rem 2rem;
   margin: 2rem 0;
 
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+
   .container-infos {
     display: flex;
     flex-direction: column;
@@ -24,15 +28,27 @@
   flex-direction: column;
   gap: 6rem;
 
+  @include onMobile {
+    gap: 3rem;
+  }
+
   li {
     width: 100%;
     height: 55vh;
+
+    @include onTabletAndMobile {
+      height: fit-content;
+    }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       margin-top: auto;
+
+      @include onTabletAndMobile {
+        height: fit-content;
+      }
     }
   }
 }
@@ -53,6 +69,14 @@
     overflow: hidden;
     margin-right: 4rem;
 
+    @include onTablet {
+      margin-right: 2rem;
+    }
+
+    @include onMobile {
+      margin-right: 1rem;
+    }
+
     &-label {
       margin-bottom: 2rem;
       font-size: 1rem;
@@ -66,6 +90,14 @@
       display: block;
       margin-top: 0.8rem;
       transform: translateX(-100%);
+
+      @include onTablet {
+        height: 3px;
+      }
+
+      @include onMobile {
+        height: 2px;
+      }
     }
   }
 
@@ -74,5 +106,13 @@
     width: auto;
     height: 80px;
     margin-top: 1rem;
+
+    @include onTablet {
+      height: 50px;
+    }
+
+    @include onMobile {
+      height: 40px;
+    }
   }
 }

@@ -18,6 +18,7 @@ import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAn
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 // import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { useResponsive } from '@/app/lib/hooks/useResponsive'
 
 interface IProps {
 	params: {
@@ -33,6 +34,7 @@ export default function ProjectPage({ params }: IProps) {
 	const projectPageRef = useRef<HTMLElement>(null)
 	const containerProjectImages = useRef<HTMLDivElement | null>(null)
 	const scroll = useScroll()
+	const device = useResponsive()
 
 	useEffect(() => {
 		projects.forEach(project => {
@@ -48,17 +50,19 @@ export default function ProjectPage({ params }: IProps) {
 	useEffect(() => {
 		if(!containerProjectContentRef.current || !containerProjectImages.current) return
 		
-		gsap.to(containerProjectContentRef.current, {
-			scrollTrigger: {
-				trigger: containerProjectImages.current,
-				start: 'bottom +=100%',
-				end: 'bottom -=100%',
-				scrub: true,
-			},
-			y: "-200vh",
-			ease: 'none',
-		})
-	})
+		if(device === 'desktop') {
+			gsap.to(containerProjectContentRef.current, {
+				scrollTrigger: {
+					trigger: containerProjectImages.current,
+					start: 'bottom +=100%',
+					end: 'bottom -=100%',
+					scrub: true,
+				},
+				y: "-200vh",
+				ease: 'none',
+			})
+		}
+	}, [device])
 
 	useEffect(() => {
 		if(transitionState === 'start') {
