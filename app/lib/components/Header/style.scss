@@ -11,21 +11,6 @@ header {
   height: fit-content;
   max-width: $max-width;
 
-  @include onLargeDesktop {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
-
-  @media (min-width: $desktop-min) and (max-width: $max-width) {
-    left: 0 !important;
-    transform: translateX(0) !important;
-  }
-
-  @include onTabletAndMobile {
-    left: 0 !important;
-    transform: translateX(0) !important;
-  }
-
   .desktop-menu {
     height: fit-content;
     padding: 1rem 2rem;

@@ -7,20 +7,9 @@ html {
   scrollbar-width: none;
   max-width: $max-width;
   background-color: $white;
-  overflow-x: hidden;
 
-  @include onDesktop {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  @include onLargeDesktop {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    margin: auto !important;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -30,18 +19,9 @@ body {
   background-color: $white;
   color: $black;
   max-width: $max-width;
-  overflow-x: hidden;
 
-  @include onDesktop {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  @include onLargeDesktop {
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  &::-webkit-scrollbar {
+    display: none;
   }
 
   h1 {

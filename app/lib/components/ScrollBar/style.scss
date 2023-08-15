@@ -9,10 +9,6 @@
   z-index: 999;
   background-color: $gray-200;
 
-  @include onTabletAndMobile {
-    display: none;
-  }
-
   .progress {
     width: 100%;
     height: 0%;
