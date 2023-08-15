@@ -61,6 +61,10 @@
   justify-content: space-between;
   align-items: flex-start;
 
+  @include onTabletAndMobile {
+    margin: 8rem auto 5rem auto;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -97,6 +101,10 @@
 
       @include onMobile {
         height: 2px;
+      }
+
+      @include onTabletAndMobile {
+        margin-bottom: 0;
       }
     }
   }

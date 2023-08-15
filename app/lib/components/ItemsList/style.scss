@@ -3,6 +3,10 @@
 .items-list {
   margin-bottom: 5rem;
 
+  @include onLargeDesktop {
+    margin-top: 8rem;
+  }
+
   li {
     position: relative;
     padding: 0 0.5rem;
