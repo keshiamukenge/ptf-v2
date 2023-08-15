@@ -3,3 +3,25 @@ $black: #2f2e2d;
 $gray-200: rgba(47, 46, 45, 0.2);
 $gray-100: #82807d;
 $white: #f0ede5;
+
+// Max size width
+$max-width: 1920px;
+
+// Mixins
+@mixin onMobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+	@media (min-width: 1201px) {
+		@content;
+	}
+}

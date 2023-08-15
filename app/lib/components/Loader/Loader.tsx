@@ -99,7 +99,7 @@ export default function Loader({ percentOnProgress, duration }: IProps) {
 		<div className="Loader">
 			<div className="container">
 				<svg ref={imageRef} width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<g clip-path="url(#clip0_1316_2)">
+					<g clipPath="url(#clip0_1316_2)">
 						<path ref={starBranch1} d="M28.525 -0.00572643L25.777 0.0288086L26.4678 54.997L29.2158 54.9624L28.525 -0.00572643Z" fill="#F0EDE5"/>
 						<path ref={starBranch2} d="M54.9622 25.7827L-0.00610352 26.4639L0.0279519 29.2119L54.9962 28.5307L54.9622 25.7827Z" fill="#F0EDE5"/>
 						<path ref={starBranch3} d="M45.7104 6.86569L7.32361 46.2158L9.29087 48.1349L47.6776 8.78479L45.7104 6.86569Z" fill="#F0EDE5"/>

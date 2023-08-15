@@ -8,7 +8,6 @@ import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 interface IProps {
 	text: string | React.ReactNode
-	delay?: number
 }
 
 export default function TextAnimation({ text }: IProps) {
