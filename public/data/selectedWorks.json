@@ -7,7 +7,7 @@
 			"siteUrl": "https://gaggenau.vercel.app/",
 			"image": {
 				"src": "/images/projects/gaggenau/1.webp",
-				"alt": "project 1"
+				"alt": "presentation of the project"
 			},
 			"details": [
 				{
@@ -52,23 +52,23 @@
 			"imagesContent": [
 				{
 					"src": "/images/projects/gaggenau/6.webp",
-					"alt": "project 1"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/gaggenau/2.webp",
-					"alt": "project 1"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/gaggenau/3.webp",
-					"alt": "project 2"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/gaggenau/4.webp",
-					"alt": "project 3"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/gaggenau/5.webp",
-					"alt": "project 2"
+					"alt": "illustration of the project"
 				}
 			]
 		},
@@ -79,7 +79,7 @@
 			"siteUrl": "https://the-lab-chi.vercel.app/",
 			"image": {
 				"src": "/images/projects/the-lab/1.webp",
-				"alt": "project 2"
+				"alt": "presentation of the project"
 			},
 			"details": [
 				{
@@ -110,15 +110,15 @@
 			"imagesContent": [
 				{
 					"src": "/images/projects/the-lab/2.webp",
-					"alt": "project 1"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/the-lab/3.webp",
-					"alt": "project 2"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/the-lab/4.webp",
-					"alt": "project 3"
+					"alt": "illustration of the project"
 				}
 			]
 		},
@@ -129,7 +129,7 @@
 			"siteUrl": "https://www.keshiamukenge.fr/",
 			"image": {
 				"src": "/images/projects/portfolio-2022/1.webp",
-				"alt": "project 1"
+				"alt": "presentation of the project"
 			},
 			"details": [
 				{
@@ -159,11 +159,11 @@
 			"imagesContent": [
 				{
 					"src": "/images/projects/portfolio-2022/2.webp",
-					"alt": "project 1"
+					"alt": "illustration of the project"
 				},
 				{
 					"src": "/images/projects/portfolio-2022/3.webp",
-					"alt": "project 1"
+					"alt": "illustration of the project"
 				}
 			]
 		}

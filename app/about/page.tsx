@@ -33,7 +33,7 @@ export default function About() {
 				<ScrollBar scrollInstance={scroll} />
 				<div className="main-container">
 					<div className="container-image">
-						<ImageAnimation src="/images/about.webp" alt="Keshia mukenge's picture" width={200} height={200} />
+						<ImageAnimation src="/images/about.webp" alt="Keshia Mukenge's picture" width={200} height={200} />
 					</div>
 					<div className="container-text">
 						<h1>
