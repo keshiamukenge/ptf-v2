@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { useScroll } from '@/app/lib/hooks/useScroll'

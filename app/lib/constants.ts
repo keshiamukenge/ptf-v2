@@ -1,0 +1,1 @@
+export const LOADINGDURATION = 4000

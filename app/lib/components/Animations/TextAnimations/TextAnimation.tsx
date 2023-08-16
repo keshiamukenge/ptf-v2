@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'

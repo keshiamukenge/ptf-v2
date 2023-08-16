@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, createRef, useEffect, MutableRefObject, useState } from 'react'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'

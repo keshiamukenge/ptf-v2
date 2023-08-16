@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 import SplitInLines from 'lines-split'
 
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'

@@ -2,7 +2,7 @@
 
 import { useRef, useCallback } from 'react'
 import Image from "next/image"
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'

@@ -2,14 +2,13 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
 import LinkIsActive from '@/app/lib/components/Links/LinkIsActive'
 import { useLoader } from '@/app/lib/providers/LoaderContext'
 import { useResponsive } from '@/app/lib/hooks/useResponsive'
-import path from 'path'
 
 export default function Header() {
 	const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState<boolean>(false)
