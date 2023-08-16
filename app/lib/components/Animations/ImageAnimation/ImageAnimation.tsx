@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import gsap from '@/app/lib/utils/gsap';
 
 import BasicImage from "./BasicImage";
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext';

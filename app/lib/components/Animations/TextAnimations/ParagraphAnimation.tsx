@@ -1,54 +1,59 @@
 'use client'
 
-import { useEffect } from 'react'
-import gsap from 'gsap'
+import { useEffect, useState, useRef } from 'react'
+import gsap from '@/app/lib/utils/gsap'
 import SplitInLines from 'lines-split'
 
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import BasicText from './BasicText'
 
 interface IProps {
-	target: string
 	text: string
 }
 
-export default function ParagraphAnimation({ target, text }: IProps) {
+export default function ParagraphAnimation({ text }: IProps) {
+	const [isVisible, setIsVisible] = useState<boolean>(false)
 	const { transitionState } = usePageTransitions()
+	const textRef = useRef<HTMLSpanElement>(null)
 
 	useEffect(() => {
-		new SplitInLines(`.paragraph-animation.${target}`)
-		gsap.set('.paragraph-animation', {
+		if(!textRef.current) return
+
+		new SplitInLines(textRef.current)
+		gsap.set(textRef.current, {
 			opacity: 1,
 		})
-	}, [target])
+	}, [])
 
 	useEffect(() => {
+		const lines = textRef.current?.querySelectorAll('span span')
+
+		if(!textRef.current || !lines) return
+
 		if(!transitionState) {
-			gsap.to('.paragraph-animation span span', {
+			gsap.to(lines, {
 				delay: 0.3,
 				y: 0,
 				duration: 0.5,
 				stagger: 0.05,
+				onComplete: () => {
+					setIsVisible(true)
+				}
 			})
 		}
 
 		if(transitionState === 'finishLeave') {
-			gsap.to('.paragraph-animation span span', {
+			gsap.to(lines, {
 				delay: 0.5,
 				y: 0,
 				duration: 0.5,
 				stagger: 0.05,
+				onComplete: () => {
+					setIsVisible(true)
+				}
 			})
 		}
-
-		// if(transitionState === 'start') {
-		// 	gsap.to('.paragraph-animation span span', {
-		// 		delay: 0.1,
-		// 		duration: 0.1,
-		// 		opacity: 0,
-		// 	})
-		// }
 	}, [transitionState])
 
-	return <BasicText text={text} target={target} />
+	return <BasicText ref={textRef} text={text} isVisible={isVisible} />
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'

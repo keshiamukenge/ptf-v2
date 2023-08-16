@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import Image from 'next/image'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 
@@ -43,12 +43,13 @@ export default function ExternalLink({ label, href }: IProps) {
 	}
 
 	return(
-		<a className="link-with-arrow" href={href} target='_blank' onMouseEnter={onEnter}>
+		<div className="ExternalLink" onMouseEnter={onEnter}>
+			<a href={href} target='_blank'></a>
 			<span className="link-label">{label}</span>
 			<span className="container-icon">
 				<Image ref={firstArrowIconRef} className="first-arrow" src="/svg/arrow.svg" alt="arrow icon" width={30} height={30} />
 				<Image ref={secondArrowIconRef} className="second-arrow" src="/svg/arrow.svg" alt="arrow icon" width={30} height={30} />
 			</span>
-		</a>
+		</div>
 	)
 }

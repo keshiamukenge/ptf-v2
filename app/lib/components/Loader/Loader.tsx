@@ -43,6 +43,8 @@ export default function Loader({ percentOnProgress, duration }: IProps) {
 	}, [intervalDuration])
 
 	const starAnimation = useCallback(() => {
+		if(!starBranch1.current || !starBranch2.current || !starBranch3.current || !starBranch4.current) return
+
 		gsap.to(starBranch1.current, {
 			rotate: 90,
 			duration: 0.5,
@@ -63,6 +65,8 @@ export default function Loader({ percentOnProgress, duration }: IProps) {
 	}, [])
 
 	useEffect(() => {
+		if(!imageRef.current) return
+		
 		gsap.to(imageRef.current,{
 			rotate: 360,
 			duration: 2.5,
@@ -91,7 +95,9 @@ export default function Loader({ percentOnProgress, duration }: IProps) {
 				delay: 0.5,
 			})
 
-			backgroundTimeline.play()
+			if(backgroundRef.current) {
+				backgroundTimeline.play()
+			}
 		}
 	}, [progress, intervalId, backgroundTimeline])
 

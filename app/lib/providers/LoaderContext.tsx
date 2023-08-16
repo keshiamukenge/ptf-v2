@@ -8,6 +8,8 @@ import React, {
   useEffect
 } from 'react'
 
+import { LOADINGDURATION } from '@/app/lib/constants'
+
 interface IProps {
   children: React.ReactNode
 }
@@ -24,12 +26,11 @@ const LoaderContext = createContext<LoaderContextType>({
 
 function LoaderProvider({ children }: IProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const loadingDuration = 4000
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, loadingDuration)
+    }, LOADINGDURATION)
   }, [])
 
   const value = useMemo(() => {

@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import gsap from 'gsap'
+import { useEffect, useState, useRef, useCallback } from 'react'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { useScroll } from '@/app/lib/hooks/useScroll'
@@ -16,9 +16,10 @@ import NextProject from '@/app/lib/components/Project/NextProject'
 import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
-// import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
+import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import { useResponsive } from '@/app/lib/hooks/useResponsive'
+import { LOADINGDURATION } from '@/app/lib/constants'
 
 interface IProps {
 	params: {
@@ -36,6 +37,27 @@ export default function ProjectPage({ params }: IProps) {
 	const scroll = useScroll()
 	const device = useResponsive()
 
+	const fixePositionOnScroll = useCallback(() => {
+		if(!containerProjectContentRef.current) return
+
+		gsap.to(containerProjectContentRef.current, {
+			scrollTrigger: {
+				trigger: containerProjectImages.current,
+				start: 'bottom +=100%',
+				end: 'bottom -=100%',
+				scrub: true,
+			},
+			y: "-200vh",
+			ease: 'none',
+		})
+	}, [containerProjectContentRef])
+
+	useEffect(() => {
+		setTimeout(() => {
+			fixePositionOnScroll()
+		}, LOADINGDURATION + 200)
+	}, [fixePositionOnScroll])
+
 	useEffect(() => {
 		projects.forEach(project => {
 			if(project.slug === params.slug) {
@@ -51,18 +73,9 @@ export default function ProjectPage({ params }: IProps) {
 		if(!containerProjectContentRef.current || !containerProjectImages.current) return
 		
 		if(device === 'desktop') {
-			gsap.to(containerProjectContentRef.current, {
-				scrollTrigger: {
-					trigger: containerProjectImages.current,
-					start: 'bottom +=100%',
-					end: 'bottom -=100%',
-					scrub: true,
-				},
-				y: "-200vh",
-				ease: 'none',
-			})
+			fixePositionOnScroll()
 		}
-	}, [device])
+	}, [device, fixePositionOnScroll])
 
 	useEffect(() => {
 		if(transitionState === 'start') {
@@ -78,7 +91,7 @@ export default function ProjectPage({ params }: IProps) {
 	}
 
 	return (
-		<>
+		<LoaderWrapper>
 			<main ref={projectPageRef} className="project-page">
 				<ScrollBar scrollInstance={scroll}/>
 				<div ref={containerProjectContentRef} className="container-project-content">
@@ -89,10 +102,7 @@ export default function ProjectPage({ params }: IProps) {
 						<ProjectInformations project={currentProject} />
 						{currentProject?.textsContent?.map((textContent, id) => (
 							<p key={id}>
-								<ParagraphAnimation
-									target="project-text-content"
-									text={textContent}
-									/>
+								<ParagraphAnimation text={textContent} />
 							</p>
 						))}
 					</div>
@@ -110,6 +120,6 @@ export default function ProjectPage({ params }: IProps) {
 				<NextProject project={currentProject} />
 			</main>
 			<Footer />
-		</>
+		</LoaderWrapper>
 	)
 }

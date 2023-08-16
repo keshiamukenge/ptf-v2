@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 import Lenis from '@studio-freight/lenis'
 
 import './style.scss'

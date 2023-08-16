@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { useResponsive } from '@/app/lib/hooks/useResponsive'

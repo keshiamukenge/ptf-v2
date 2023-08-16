@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
-import gsap from 'gsap'
+import gsap from '@/app/lib/utils/gsap'
 
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 import ExternalLink from '@/app/lib/components/Links/ExternalLink'
