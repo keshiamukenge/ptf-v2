@@ -1,10 +1,17 @@
+'use client'
+
+import { forwardRef } from 'react'
+
 import './style.scss'
 
 interface IProps {
 	text: string
-	target: string
+	isVisible?: boolean
 }
 
-export default function BasicText({ text, target }: IProps) {
-	return <span className={`paragraph-animation ${target}`}>{text}</span>
-}
+const BasicText = forwardRef<HTMLSpanElement, IProps>(function TextComponent(props, ref) {
+	const { text, isVisible } = props
+	return <span ref={ref} className={`paragraph-animation ${isVisible ? "visible" : null}`}>{text}</span>
+})
+
+export default BasicText

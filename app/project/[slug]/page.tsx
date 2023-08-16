@@ -89,10 +89,7 @@ export default function ProjectPage({ params }: IProps) {
 						<ProjectInformations project={currentProject} />
 						{currentProject?.textsContent?.map((textContent, id) => (
 							<p key={id}>
-								<ParagraphAnimation
-									target="project-text-content"
-									text={textContent}
-									/>
+								<ParagraphAnimation text={textContent} />
 							</p>
 						))}
 					</div>
