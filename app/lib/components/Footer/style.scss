@@ -2,9 +2,6 @@
 
 footer {
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   max-width: 1920px;
   width: 100%;
 
@@ -29,11 +26,32 @@ footer {
     }
   }
 
-  .copyright {
-    font-size: 12px;
+  .content-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 
-    @include onMobile {
-      font-size: 8px;
+    .container-links {
+      display: flex;
+      gap: 1rem;
+      width: fit-content;
+    }
+  }
+
+  .content-bottom {
+    border-top: 0.5px solid $black;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    .copyright {
+      font-size: 10px;
+
+      @include onMobile {
+        font-size: 8px;
+      }
     }
   }
 }
