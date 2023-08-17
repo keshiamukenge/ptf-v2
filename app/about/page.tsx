@@ -17,6 +17,7 @@ export default function About() {
 	const aboutPageRef = useRef<HTMLElement>(null)
 	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
+	const aboutText = "Hello, I'm Keshia Mukenge, a web developer specialized in front-end web development. After five years of studies and driven by my passion for design and art, I've established my calling in creative web development. My approach aims to harmonize the technicality of code with artistic creativity, with the goal of giving rise to unique web experiences. My portfolio highlights projects focused on animation and 3D (WebGL), areas that I've carefully cultivated throughout my journey."
 
 	useEffect(() => {
 		if(transitionState === 'start') {
@@ -40,9 +41,7 @@ export default function About() {
 							<TitleAnimation text="About" />
 						</h1>
 						<p>
-							<ParagraphAnimation
-								text="Lorem ipsum dolor sit amet consectetur. Duis nec semper velit sapien sollicitudin habitasse faucibus. Tempus congue sed ornare commodo justo netus. Magna pretium nec vitae interdum. Vulputate integer tincidunt malesuada nunc mauris tortor enim odio. Lorem ipsum dolor sit amet consectetur. Duis nec semper velit sapien sollicitudin habitasse faucibus. Tempus congue sed ornare commodo justo netus. Magna pretium nec vitae interdum. Vulputate integer tincidunt malesuada nunc mauris tortor enim odio."
-							/>
+							<ParagraphAnimation text={aboutText} />
 						</p>
 					</div>
 				</div>
