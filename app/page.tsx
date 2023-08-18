@@ -67,6 +67,7 @@ export default function Home() {
                 }
                 delayBeforeLeave={400}
                 delayToStart={0}
+                prefetch
               >
                 <ImageAnimation
                   src={project.image.src}

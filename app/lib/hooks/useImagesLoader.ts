@@ -14,7 +14,7 @@ export function useImagesLoader(imagesUrls: string[]) {
 		for(let i = progress; i <= nextStep; i++) {
 			setProgress(i)
 		}
-	}, [imagesUrls.length, setProgress])
+	}, [imagesUrls.length, progress])
 
 	function loadImage(url: string): Promise<string> {
 		return new Promise((resolve, reject) => {

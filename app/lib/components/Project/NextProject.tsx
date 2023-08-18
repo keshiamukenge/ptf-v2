@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import Image from 'next/image'
 import gsap from '@/app/lib/utils/gsap'
 
@@ -65,6 +65,7 @@ export default function NextProject({ project }: IProps) {
 				onClick={() => setSelectedProjectId(projects[nextProjectId].id)}
 				delayBeforeLeave={400}
 				delayToStart={0}
+				prefetch
 			>
 				<div className="next-project" onMouseEnter={onEnter} onMouseLeave={onLeave}>
 					<div className="container-text">

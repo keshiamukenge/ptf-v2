@@ -15,7 +15,7 @@ import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
 import { Archive } from '@/app/lib/types/archive'
 
 export default function Archives() {
-	const [imagesUrls, setImagesUrls] = useState<string[]>([])
+	const [imagesUrls, setImagesUrls] = useState<any>([])
 	const [archives, setArchives] = useState<Archive[]>([])
 	const [footerIsFixed, setFooterIsFixed] = useState<boolean>(true)
 	const archivesPageRef = useRef<HTMLDivElement | null>(null)
@@ -27,7 +27,7 @@ export default function Archives() {
 			const result = await getArchivesServices()
 
 			setArchives(result)
-			const imagesToLoad: string[] = result.filter(archive => archive.content.image?.src)
+			const imagesToLoad = result.filter(archive => archive.content.image?.src)
 			setImagesUrls(imagesToLoad)
 		} catch (error) {
 			console.log(error)

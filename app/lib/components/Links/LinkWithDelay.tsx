@@ -13,9 +13,10 @@ interface IProps {
 	delayBeforeLeave: number
 	delayToStart: number
 	additionalClassName?: string
+	prefetch?: boolean
 }
 
-export default function LinkWithDelay({ children, href, onClick, delayBeforeLeave, delayToStart, additionalClassName }: IProps) {
+export default function LinkWithDelay({ children, href, onClick, delayBeforeLeave, delayToStart, additionalClassName, prefetch }: IProps) {
 	const { setTransitionState } = usePageTransitions()
 	const router = useRouter()
 	const pathname = usePathname()
@@ -36,5 +37,14 @@ export default function LinkWithDelay({ children, href, onClick, delayBeforeLeav
 		}, delayBeforeLeave)
 	}
 
-	return <Link className={additionalClassName} href={href} onClick={handleClick}>{children}</Link>
+	return (
+		<Link
+			className={additionalClassName}
+			href={href}
+			onClick={handleClick}
+			prefetch={prefetch ? prefetch : false}
+		>
+			{children}
+		</Link>
+	)
 }
