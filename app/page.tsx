@@ -13,6 +13,7 @@ import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/Image
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { DEFAULT_DELAY_BEFORE_LEAVE, DEFAULT_DELAY_TO_START } from '@/app/lib/constants'
 
 export default function Home() {
   const [startLoader, setStartLoader] = useState<boolean>(false)
@@ -66,8 +67,8 @@ export default function Home() {
                 onClick={() =>
                   setSelectedProjectId(id)
                 }
-                delayBeforeLeave={400}
-                delayToStart={0}
+                delayBeforeLeave={DEFAULT_DELAY_BEFORE_LEAVE}
+                delayToStart={DEFAULT_DELAY_TO_START}
                 prefetch
               >
                 <ImageAnimation

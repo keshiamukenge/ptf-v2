@@ -18,7 +18,7 @@ export default function Transition() {
 			})
 
 			gsap.to(transitionRef.current, {
-				duration: 0.7,
+				duration: 1,
 				top: -2,
 				ease: Expo.easeOut,
 			})
@@ -31,12 +31,13 @@ export default function Transition() {
 
 		if (transitionState === 'finishLeave') {
 			gsap.set(darkBackground.current, {
-				delay: 0.2,
+				delay: 0.3,
 				display: 'none',
 				opacity: 0
 			})
 			gsap.to(transitionRef.current, {
-				duration: 0.7,
+				delay: 0.2,
+				duration: 1,
 				bottom: '100%',
 				ease: Expo.easeIn,
 				onComplete: () => {

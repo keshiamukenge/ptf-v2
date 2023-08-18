@@ -19,7 +19,7 @@ export default function TitleAnimation({ text }: IProps) {
 		if(!transitionState) {
 			setTimeout(() => {
 				gsap.to(titleRef.current, {
-					duration: 0.4,
+					duration: 0.6,
 					y: 0,
 				})
 			}, START_PAGE_ANIMATION_DELAY)
@@ -27,8 +27,8 @@ export default function TitleAnimation({ text }: IProps) {
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(titleRef.current, {
-				delay: 0.5,
-				duration: 0.4,
+				delay: 0.9,
+				duration: 0.6,
 				y: 0,
 			})
 		}

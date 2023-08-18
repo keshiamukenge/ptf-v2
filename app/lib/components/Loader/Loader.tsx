@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState, useCallback } from 'react'
+import { useRef, useEffect, useCallback } from 'react'
 import gsap, { Expo } from 'gsap'
 
 import './style.scss'
@@ -49,13 +49,13 @@ export default function Loader({ imagesUrls }: IProps) {
 						gsap.to(backgroundRef.current, {
 							width: '40%',
 							height: '20%',
-							duration: 0.5,
+							duration: 1,
 							ease: Expo.easeIn,
 							onComplete: () => {
 								gsap.to(backgroundRef.current, {
 									width: '100vw',
 									height: '100vh',
-									duration: 0.5,
+									duration: 1,
 									expo: Expo.easeOut,
 								})
 							}

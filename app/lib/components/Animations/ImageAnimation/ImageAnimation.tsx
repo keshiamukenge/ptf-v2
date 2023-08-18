@@ -39,7 +39,7 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 
 	useEffect(() => {
 		if(!transitionState) {
-			setTimeout(( ) => {
+			setTimeout(() => {
 				gsap.to(imgRef.current, {
 					opacity: 1,
 					duration: 0.8,
@@ -51,7 +51,7 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 			gsap.to(imgRef.current, {
 				delay: 0.5,
 				opacity: 1,
-				duration: 0.5,
+				duration: 0.8,
 			})
 		}
 	}, [transitionState, isLoading]);

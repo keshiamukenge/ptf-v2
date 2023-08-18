@@ -21,7 +21,7 @@ export default function TextAnimation({ text }: IProps) {
 			gsap.to(textRef.current, {
 				delay: 0.3,
 				y: 0,
-				duration: 0.5,
+				duration: 0.6,
 			})
 			}, START_PAGE_ANIMATION_DELAY)
 		}
@@ -35,9 +35,9 @@ export default function TextAnimation({ text }: IProps) {
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(textRef.current, {
-				delay: 0.5,
+				delay: 1.2,
 				y: 0,
-				duration: 0.5,
+				duration: 0.6,
 			})
 		}
 	}, [transitionState])
