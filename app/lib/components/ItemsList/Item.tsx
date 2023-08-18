@@ -7,6 +7,8 @@ import gsap from '@/app/lib/utils/gsap'
 import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import { Archive } from '@/app/lib/types/archive'
+import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants'
 
 interface IProps {
 	item: Archive
@@ -18,6 +20,7 @@ export default function Item({ item }: IProps) {
 	const containerArrowsIconsRef = useRef<HTMLDivElement>(null)
 	const containerArrowsIcons = useRef<HTMLDivElement>(null)
 	const borderRef = useRef<HTMLSpanElement>(null)
+	const { transitionState } = usePageTransitions()
 
 	function showProjectDetails() {
 		if(!itemRef.current) return
@@ -57,6 +60,23 @@ export default function Item({ item }: IProps) {
 
 	useEffect(() => {
 		if(!containerArrowsIcons.current) return
+
+		if(!transitionState) {
+			setTimeout(() => {
+				gsap.to(containerArrowsIcons.current, {
+					opacity: 1,
+					duration: 0.3,
+				})
+				
+				gsap.to(borderRef.current, {
+					delay: 0.4,
+					width: '100%',
+					duration: 0.5,
+				})
+			}, START_PAGE_ANIMATION_DELAY)
+
+			return
+		}
 
 		gsap.to(containerArrowsIcons.current, {
 			opacity: 1,
