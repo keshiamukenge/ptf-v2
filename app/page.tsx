@@ -15,6 +15,7 @@ import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 export default function Home() {
+  const [imagesUrls, setImagesUrls] = useState<string[]>([])
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
   const { projects, setSelectedProjectId, setProjectsRefs } = useProjects()
   const { transitionState } = usePageTransitions()
@@ -22,6 +23,10 @@ export default function Home() {
   const homePageRef = useRef<HTMLElement>(null)
   const itemsRefs: MutableRefObject<MutableRefObject<HTMLLIElement>[]> = useRef<MutableRefObject<HTMLLIElement>[]>([])
   itemsRefs.current = projects.map((_, i) => itemsRefs.current[i] ?? createRef());
+
+  useEffect(() => {
+    setImagesUrls(projects.map(project => project.image.src))
+  }, [projects, setImagesUrls])
 
   useEffect(() => {
     setSelectedProjectId(null)
@@ -41,7 +46,7 @@ export default function Home() {
 	}, [transitionState])
   
   return (
-    <LoaderWrapper>
+    <LoaderWrapper imagesUrls={imagesUrls}>
       <main className="home-page" ref={homePageRef}>
         <ScrollBar scrollInstance={scroll}/>
         <h1>
@@ -62,14 +67,15 @@ export default function Home() {
                 }
                 delayBeforeLeave={400}
                 delayToStart={0}
-                >
+                prefetch
+              >
                 <ImageAnimation
                   src={project.image.src}
                   alt={project.image.alt}
                   width={500}
                   height={500}
                   isHovered={id === hoveredProjectId}
-                  />
+                />
               </LinkWithDelay>
               <div className="container-project-infos">
                 <span>{project.title}</span>

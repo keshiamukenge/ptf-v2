@@ -5,6 +5,7 @@ import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants';
 
 interface IProps {
 	text: string
@@ -16,10 +17,12 @@ export default function TitleAnimation({ text }: IProps) {
 
 	useEffect(() => {
 		if(!transitionState) {
-			gsap.to(titleRef.current, {
-				duration: 0.4,
-				y: 0,
-			})
+			setTimeout(() => {
+				gsap.to(titleRef.current, {
+					duration: 0.4,
+					y: 0,
+				})
+			}, START_PAGE_ANIMATION_DELAY)
 		}
 
 		if(transitionState === 'finishLeave') {

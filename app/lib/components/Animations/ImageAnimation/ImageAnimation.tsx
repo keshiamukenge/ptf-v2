@@ -5,6 +5,8 @@ import gsap from '@/app/lib/utils/gsap';
 
 import BasicImage from "./BasicImage";
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext';
+import { useLoader } from '@/app/lib/providers/LoaderContext';
+import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants';
 
 interface IProps {
 	src: string;
@@ -17,6 +19,7 @@ interface IProps {
 export default function ImageAnimation({ src, alt, width, height, isHovered }: IProps) {
 	const imgRef = useRef<HTMLImageElement>(null);
 	const { transitionState } = usePageTransitions();
+	const { isLoading } = useLoader();
 
 	useEffect(() => {
 		if(!imgRef.current) return
@@ -36,10 +39,12 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 
 	useEffect(() => {
 		if(!transitionState) {
-			gsap.to(imgRef.current, {
-				opacity: 1,
-				duration: 0.8,
-			})
+			setTimeout(( ) => {
+				gsap.to(imgRef.current, {
+					opacity: 1,
+					duration: 0.8,
+				})
+			}, START_PAGE_ANIMATION_DELAY)
 		}
 
 		if(transitionState === 'finishLeave') {
@@ -49,7 +54,7 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 				duration: 0.5,
 			})
 		}
-	}, [transitionState]);
+	}, [transitionState, isLoading]);
 
 	return (
 		<div className='container-image-animation'>

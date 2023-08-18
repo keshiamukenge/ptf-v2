@@ -19,7 +19,7 @@ import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import { useResponsive } from '@/app/lib/hooks/useResponsive'
-import { LOADINGDURATION } from '@/app/lib/constants'
+import { LOADER_TRANSITION_DURATION } from '@/app/lib/constants'
 
 interface IProps {
 	params: {
@@ -28,6 +28,7 @@ interface IProps {
 }
 
 export default function ProjectPage({ params }: IProps) {
+	const [imagesUrls, setImagesUrls] = useState<string[]>([])
 	const [currentProject, setCurrentProject] = useState<Project | undefined>()
 	const { projects, selectedProjectId, setSelectedProjectId } = useProjects()
 	const { transitionState } = usePageTransitions()
@@ -53,9 +54,15 @@ export default function ProjectPage({ params }: IProps) {
 	}, [containerProjectContentRef])
 
 	useEffect(() => {
+		if(!currentProject) return
+
+    setImagesUrls(currentProject.imagesContent.map(imageContent => imageContent.src))
+  }, [projects, setImagesUrls, currentProject])
+
+	useEffect(() => {
 		setTimeout(() => {
 			fixePositionOnScroll()
-		}, LOADINGDURATION + 200)
+		}, LOADER_TRANSITION_DURATION + 500)
 	}, [fixePositionOnScroll])
 
 	useEffect(() => {
@@ -91,7 +98,7 @@ export default function ProjectPage({ params }: IProps) {
 	}
 
 	return (
-		<LoaderWrapper>
+		<LoaderWrapper imagesUrls={imagesUrls}>
 			<main ref={projectPageRef} className="project-page">
 				<ScrollBar scrollInstance={scroll}/>
 				<div ref={containerProjectContentRef} className="container-project-content">

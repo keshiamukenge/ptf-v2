@@ -4,15 +4,15 @@ import { useRef, useEffect, useState, useCallback } from 'react'
 import gsap, { Expo } from 'gsap'
 
 import './style.scss'
+import { useImagesLoader } from '@/app/lib/hooks/useImagesLoader'
+
 
 interface IProps {
-	percentOnProgress: boolean
-	duration: number
+	imagesUrls: string[]
 }
 
-export default function Loader({ percentOnProgress, duration }: IProps) {
-	const [progress, setProgress] = useState<number>(0)
-	const [intervalId, setIntervalId] = useState<null | ReturnType<typeof setInterval>>(null)
+export default function Loader({ imagesUrls }: IProps) {
+	const { progress } = useImagesLoader(imagesUrls)
 	const imageRef = useRef(null)
 	const starBranch1 = useRef(null)
 	const starBranch2 = useRef(null)
@@ -20,29 +20,9 @@ export default function Loader({ percentOnProgress, duration }: IProps) {
 	const starBranch4 = useRef(null)
 	const backgroundRef = useRef(null)
 	const progressRef = useRef(null)
-	const intervalDuration = duration / 100
-	const backgroundTimeline = gsap
-		.timeline({ paused: true, delay: 0.5 })
-		.to(backgroundRef.current, {
-			width: '40%',
-			height: '20%',
-			duration: 0.75,
-			ease: Expo.easeIn,
-		})
-		.to(backgroundRef.current, {
-			width: '100vw',
-			height: '100vh',
-			duration: 0.75,
-			expo: Expo.easeOut,
-		})
+	const starRotationAnimation = useRef<null | GSAPTween>(null);
 
-	const startInterval = useCallback(() => {
-		return setInterval(() => {
-			setProgress(prev => prev + 1)
-		}, intervalDuration)
-	}, [intervalDuration])
-
-	const starAnimation = useCallback(() => {
+	const transitionAnimation = useCallback(() => {
 		if(!starBranch1.current || !starBranch2.current || !starBranch3.current || !starBranch4.current) return
 
 		gsap.to(starBranch1.current, {
@@ -52,54 +32,69 @@ export default function Loader({ percentOnProgress, duration }: IProps) {
 		})
 
 		gsap.to(starBranch4.current, {
-			rotate: "-=45",
+			rotate: -45,
 			duration: 0.5,
 			transformOrigin: 'center',
 		})
 
 		gsap.to(starBranch3.current, {
-			rotate: "+=45",
+			rotate: 45,
 			duration: 0.5,
 			transformOrigin: 'center',
+			onComplete: () => {
+				gsap.set(backgroundRef.current, {
+					opacity: 1,
+					delay: 0.5,
+					onComplete: () => {
+						gsap.to(backgroundRef.current, {
+							width: '40%',
+							height: '20%',
+							duration: 0.5,
+							ease: Expo.easeIn,
+							onComplete: () => {
+								gsap.to(backgroundRef.current, {
+									width: '100vw',
+									height: '100vh',
+									duration: 0.5,
+									expo: Expo.easeOut,
+								})
+							}
+						})
+					}
+				})
+				gsap.to(progressRef.current, {
+					y: '100%',
+					duration: 1,
+					delay: 0.5,
+				})
+			}
 		})
 	}, [])
 
 	useEffect(() => {
 		if(!imageRef.current) return
 		
-		gsap.to(imageRef.current,{
-			rotate: 360,
+		starRotationAnimation.current = gsap.to(imageRef.current,{
+			rotation: 360,
+			repeat: -1,
 			duration: 2.5,
+			ease: 'linear',
 		})
 	}, [])
 
 	useEffect(() => {
-		if(!percentOnProgress) {
-			starAnimation()
-		};
-
-		setIntervalId(startInterval)
-		
-	}, [percentOnProgress, intervalDuration, startInterval, starAnimation])
-
-	useEffect(() => {
-		if(progress >= 100 && intervalId) {
-			clearInterval(intervalId)
-			gsap.set(backgroundRef.current, {
-				opacity: 1,
-				delay: 0.5,
+		if(progress === 100) {
+			starRotationAnimation.current?.kill()
+			gsap.to(imageRef.current,{
+				rotation: 180,
+				duration: 0.75,
+				ease: 'linear',
+				onComplete: () => {
+					transitionAnimation()
+				}
 			})
-			gsap.to(progressRef.current, {
-				y: '100%',
-				duration: 1,
-				delay: 0.5,
-			})
-
-			if(backgroundRef.current) {
-				backgroundTimeline.play()
-			}
 		}
-	}, [progress, intervalId, backgroundTimeline])
+	}, [progress, transitionAnimation])
 
 	return(
 		<div className="Loader">
