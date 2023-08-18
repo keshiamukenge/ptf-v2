@@ -15,6 +15,7 @@ import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 
 export default function Home() {
+  const [startLoader, setStartLoader] = useState<boolean>(false)
   const [imagesUrls, setImagesUrls] = useState<string[]>([])
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
   const { projects, setSelectedProjectId, setProjectsRefs } = useProjects()

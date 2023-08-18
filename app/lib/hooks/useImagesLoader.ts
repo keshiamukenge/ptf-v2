@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { useLoader } from '@/app/lib/providers/LoaderContext';
-import { LOADER_TRANSITION_DURATION } from '@/app/lib/constants';
+import { LOADER_TRANSITION_DURATION, LOADER_DURATION_WITHOUT_IMAGES } from '@/app/lib/constants';
 
 export function useImagesLoader(imagesUrls: string[]) {
 	const [imagesLoaded, setImagesLoaded] = useState<string[]>([])
@@ -14,7 +14,9 @@ export function useImagesLoader(imagesUrls: string[]) {
 		for(let i = progress; i <= nextStep; i++) {
 			setProgress(i)
 		}
-	}, [imagesUrls.length, progress])
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [imagesUrls.length, setProgress])
 
 	function loadImage(url: string): Promise<string> {
 		return new Promise((resolve, reject) => {
@@ -27,12 +29,6 @@ export function useImagesLoader(imagesUrls: string[]) {
 
 	useEffect(() => {
 		async function loadImagesSequentially() {
-			if(imagesUrls.length === 0) {
-				for(let i = 0; i <= 100; i++) {
-					setProgress(i)
-				}
-			}
-
       const loadedImagesArray: string[] = [];
       for (const imageUrl of imagesUrls) {
         const image = await loadImage(imageUrl);
@@ -41,8 +37,16 @@ export function useImagesLoader(imagesUrls: string[]) {
       }
 			setImagesLoaded(loadedImagesArray)
 		}
-
+		
 		loadImagesSequentially()
+
+		setTimeout(() => {
+			if(imagesUrls.length === 0) {
+				for(let i = 0; i <= 100; i++) {
+					setProgress(i)
+				}
+			}
+		}, LOADER_DURATION_WITHOUT_IMAGES)
 	}, [imagesLoaded.length, imagesUrls, setIsLoading, handleProgress])
 
 	useEffect(() => {
@@ -55,7 +59,7 @@ export function useImagesLoader(imagesUrls: string[]) {
 
 
 	return {
-		imagesLoaded: imagesLoaded,
+		imagesLoaded,
 		progress,
 	}
 }
