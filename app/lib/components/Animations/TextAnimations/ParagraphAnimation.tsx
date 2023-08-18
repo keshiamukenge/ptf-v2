@@ -48,7 +48,7 @@ export default function ParagraphAnimation({ text }: IProps) {
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(lines, {
-				delay: 0.5,
+				delay: 1.2,
 				y: 0,
 				duration: 0.5,
 				stagger: 0.05,

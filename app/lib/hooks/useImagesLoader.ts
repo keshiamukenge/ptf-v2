@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { useLoader } from '@/app/lib/providers/LoaderContext';
-import { LOADER_TRANSITION_DURATION, LOADER_DURATION_WITHOUT_IMAGES } from '@/app/lib/constants';
+import { LOADER_TRANSITION_DURATION, LOADER_DURATION_WITHOUT_IMAGES_TO_LOAD } from '@/app/lib/constants';
 
 export function useImagesLoader(imagesUrls: string[]) {
 	const [imagesLoaded, setImagesLoaded] = useState<string[]>([])
@@ -46,7 +46,7 @@ export function useImagesLoader(imagesUrls: string[]) {
 					setProgress(i)
 				}
 			}
-		}, LOADER_DURATION_WITHOUT_IMAGES)
+		}, LOADER_DURATION_WITHOUT_IMAGES_TO_LOAD)
 	}, [imagesLoaded.length, imagesUrls, setIsLoading, handleProgress])
 
 	useEffect(() => {

@@ -6,6 +6,7 @@ import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
+import { DEFAULT_DELAY_TO_START, DEFAULT_DELAY_BEFORE_LEAVE } from '@/app/lib/constants'
 
 interface IProps {
 	label: string
@@ -47,7 +48,7 @@ export default function InternalLink({ label, href }: IProps) {
 	return(
 		<div className="InternalLink" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 			<Image ref={arrowIconRef} src="/svg/arrow.svg" alt="arrow icon" width={20} height={20} />
-			<LinkWithDelay href={href} delayBeforeLeave={400} delayToStart={0}>
+			<LinkWithDelay href={href} delayBeforeLeave={DEFAULT_DELAY_BEFORE_LEAVE} delayToStart={DEFAULT_DELAY_TO_START}>
 				<span ref={linkRef} >
 					{label}
 				</span>

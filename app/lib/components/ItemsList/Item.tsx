@@ -84,7 +84,7 @@ export default function Item({ item }: IProps) {
 		})
 
 		gsap.to(borderRef.current, {
-			delay: 0.4,
+			delay: 1.2,
 			width: '100%',
 			duration: 0.5,
 		})
