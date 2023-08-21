@@ -88,7 +88,7 @@ export default function Item({ item }: IProps) {
 			width: '100%',
 			duration: 0.5,
 		})
-	}, [containerArrowsIcons, borderRef])
+	}, [containerArrowsIcons, borderRef, transitionState])
 
 	return(
 		<li ref={itemRef}>

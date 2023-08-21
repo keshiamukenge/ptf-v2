@@ -15,8 +15,8 @@ export default function ProjectImages({ images }: IProps) {
 						key={image.src}
 						src={image.src}
 						alt={image.alt}
-						width={400}
-						height={400}
+						width={1200}
+						height={600}
 					/>
 				</li>
 			))}

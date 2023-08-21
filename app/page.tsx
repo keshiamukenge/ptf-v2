@@ -74,8 +74,8 @@ export default function Home() {
                 <ImageAnimation
                   src={project.image.src}
                   alt={project.image.alt}
-                  width={500}
-                  height={500}
+                  width={800}
+                  height={800}
                   isHovered={id === hoveredProjectId}
                 />
               </LinkWithDelay>

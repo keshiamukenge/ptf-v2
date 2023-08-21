@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
@@ -17,7 +17,6 @@ import { Archive } from '@/app/lib/types/archive'
 export default function Archives() {
 	const [imagesUrls, setImagesUrls] = useState<any>([])
 	const [archives, setArchives] = useState<Archive[]>([])
-	const [footerIsFixed, setFooterIsFixed] = useState<boolean>(true)
 	const archivesPageRef = useRef<HTMLDivElement | null>(null)
 	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
@@ -59,7 +58,7 @@ export default function Archives() {
 					</div>
 					<ItemsList items={archives} />
 				</main>
-				<Footer fixedPosition={footerIsFixed} />
+				<Footer />
 			</div>
 		</LoaderWrapper>
 	)
