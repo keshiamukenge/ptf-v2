@@ -1,20 +1,21 @@
 @import '../lib/assets/scss/variables.scss';
 
 .about-page {
-  padding: 4rem 2rem 0 2rem;
+  padding: 8rem 2rem 2rem 2rem;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: fit-content;
+  min-height: 88.4vh;
   align-items: center;
 
   @include onTablet {
     padding: 1rem 1rem 0 1rem;
-    margin: 8rem 0 10rem 0;
+    margin: 6rem 0 6rem 0;
   }
 
   @include onMobile {
     padding: 1rem 1rem 0 1rem;
-    margin: 8rem 0 10rem 0;
+    margin: 6rem 0 6rem 0;
   }
 
   .main-container {
