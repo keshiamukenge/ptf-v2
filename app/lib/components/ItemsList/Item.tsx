@@ -64,6 +64,7 @@ export default function Item({ item }: IProps) {
 		if(!transitionState) {
 			setTimeout(() => {
 				gsap.to(containerArrowsIcons.current, {
+					delay: 0.4,
 					opacity: 1,
 					duration: 0.3,
 				})
@@ -79,6 +80,7 @@ export default function Item({ item }: IProps) {
 		}
 
 		gsap.to(containerArrowsIcons.current, {
+			delay: 1.2,
 			opacity: 1,
 			duration: 0.3,
 		})
