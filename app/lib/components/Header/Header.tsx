@@ -78,7 +78,7 @@ export default function Header() {
 						</LinkWithDelay>
 					</LinkIsActive>
 					<LinkIsActive additionalClassName="archives-link" path="/archives">
-						<LinkWithDelay href="/archives" delayBeforeLeave={DEFAULT_DELAY_BEFORE_LEAVE} delayToStart={DEFAULT_DELAY_TO_START}>
+						<LinkWithDelay href="/archives" delayBeforeLeave={DEFAULT_DELAY_BEFORE_LEAVE} delayToStart={DEFAULT_DELAY_TO_START} prefetch>
 							Archives
 						</LinkWithDelay>
 					</LinkIsActive>
