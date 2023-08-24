@@ -5,7 +5,7 @@ import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
-import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants';
+import { useLoader } from '@/app/lib/providers/LoaderContext'
 
 interface IProps {
 	text: string
@@ -14,15 +14,14 @@ interface IProps {
 export default function TitleAnimation({ text }: IProps) {
 	const titleRef = useRef(null)
 	const { transitionState } = usePageTransitions()
+	const { isLoading } = useLoader()
 
 	useEffect(() => {
-		if(!transitionState) {
-			setTimeout(() => {
-				gsap.to(titleRef.current, {
-					duration: 0.6,
-					y: 0,
-				})
-			}, START_PAGE_ANIMATION_DELAY)
+		if(!transitionState && !isLoading) {
+			gsap.to(titleRef.current, {
+				duration: 0.6,
+				y: 0,
+			})
 		}
 
 		if(transitionState === 'finishLeave') {
@@ -32,7 +31,7 @@ export default function TitleAnimation({ text }: IProps) {
 				y: 0,
 			})
 		}
-	}, [transitionState])
+	}, [transitionState, isLoading])
 
 	return(
 		<span className="container-title-animation">

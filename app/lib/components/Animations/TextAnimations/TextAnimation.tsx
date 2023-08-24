@@ -5,7 +5,7 @@ import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
-import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants';
+import { useLoader } from '@/app/lib/providers/LoaderContext'
 
 interface IProps {
 	text: string | React.ReactNode
@@ -14,16 +14,15 @@ interface IProps {
 export default function TextAnimation({ text }: IProps) {
 	const { transitionState } = usePageTransitions()
 	const textRef = useRef<HTMLSpanElement>(null)
+	const { isLoading } = useLoader()
 
 	useEffect(() => {
-		if(!transitionState) {	
-			setTimeout(() => {
+		if(!transitionState && !isLoading) {	
 			gsap.to(textRef.current, {
 				delay: 0.3,
 				y: 0,
 				duration: 0.6,
 			})
-			}, START_PAGE_ANIMATION_DELAY)
 		}
 		
 		if(transitionState === 'start') {
@@ -40,7 +39,7 @@ export default function TextAnimation({ text }: IProps) {
 				duration: 0.6,
 			})
 		}
-	}, [transitionState])
+	}, [transitionState, isLoading])
 
 	return(
 		<span className="container-text-animation">

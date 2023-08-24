@@ -6,7 +6,6 @@ import gsap from '@/app/lib/utils/gsap';
 import BasicImage from "./BasicImage";
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext';
 import { useLoader } from '@/app/lib/providers/LoaderContext';
-import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants';
 
 interface IProps {
 	src: string;
@@ -38,13 +37,11 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 	}, [isHovered])
 
 	useEffect(() => {
-		if(!transitionState) {
-			setTimeout(() => {
-				gsap.to(imgRef.current, {
-					opacity: 1,
-					duration: 0.8,
-				})
-			}, START_PAGE_ANIMATION_DELAY)
+		if(!transitionState && !isLoading) {
+			gsap.to(imgRef.current, {
+				opacity: 1,
+				duration: 0.8,
+			})
 		}
 
 		if(transitionState === 'finishLeave') {
