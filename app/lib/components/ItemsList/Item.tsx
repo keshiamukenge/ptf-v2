@@ -8,7 +8,7 @@ import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAn
 import ExternalLink from '@/app/lib/components/Links/ExternalLink'
 import { Archive } from '@/app/lib/types/archive'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
-import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants'
+import { useLoader } from '@/app/lib/providers/LoaderContext'
 
 interface IProps {
 	item: Archive
@@ -21,6 +21,7 @@ export default function Item({ item }: IProps) {
 	const containerArrowsIcons = useRef<HTMLDivElement>(null)
 	const borderRef = useRef<HTMLSpanElement>(null)
 	const { transitionState } = usePageTransitions()
+	const { isLoading } = useLoader()
 
 	function showProjectDetails() {
 		if(!itemRef.current) return
@@ -61,36 +62,36 @@ export default function Item({ item }: IProps) {
 	useEffect(() => {
 		if(!containerArrowsIcons.current) return
 
-		if(!transitionState) {
-			setTimeout(() => {
-				gsap.to(containerArrowsIcons.current, {
-					delay: 0.4,
-					opacity: 1,
-					duration: 0.3,
-				})
-				
-				gsap.to(borderRef.current, {
-					delay: 0.4,
-					width: '100%',
-					duration: 0.5,
-				})
-			}, START_PAGE_ANIMATION_DELAY)
+		if(!transitionState && !isLoading) {
+			gsap.to(containerArrowsIcons.current, {
+				delay: 0.4,
+				opacity: 1,
+				duration: 0.5,
+			})
+			
+			gsap.to(borderRef.current, {
+				delay: 0.4,
+				width: '100%',
+				duration: 0.5,
+			})
 
 			return
 		}
 
-		gsap.to(containerArrowsIcons.current, {
-			delay: 1.2,
-			opacity: 1,
-			duration: 0.3,
-		})
+		if(transitionState === 'finishLeave') {
+			gsap.to(containerArrowsIcons.current, {
+				delay: 1.2,
+				opacity: 1,
+				duration: 0.5,
+			})
 
-		gsap.to(borderRef.current, {
-			delay: 1.2,
-			width: '100%',
-			duration: 0.5,
-		})
-	}, [containerArrowsIcons, borderRef, transitionState])
+			gsap.to(borderRef.current, {
+				delay: 1.2,
+				width: '100%',
+				duration: 0.5,
+			})
+		}
+	}, [transitionState, isLoading])
 
 	return(
 		<li ref={itemRef}>
