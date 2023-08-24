@@ -6,7 +6,7 @@ import SplitInLines from 'lines-split'
 
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import BasicText from './BasicText'
-import { START_PAGE_ANIMATION_DELAY } from '@/app/lib/constants';
+import { useLoader } from '@/app/lib/providers/LoaderContext'
 
 interface IProps {
 	text: string
@@ -15,6 +15,7 @@ interface IProps {
 export default function ParagraphAnimation({ text }: IProps) {
 	const [isVisible, setIsVisible] = useState<boolean>(false)
 	const { transitionState } = usePageTransitions()
+	const { isLoading } = useLoader()
 	const textRef = useRef<HTMLSpanElement>(null)
 
 	useEffect(() => {
@@ -31,19 +32,18 @@ export default function ParagraphAnimation({ text }: IProps) {
 
 		if(!textRef.current || !lines) return
 
-		if(!transitionState) {
-			setTimeout(() => {
+		if(!transitionState && !isLoading) {
+			gsap.to(lines, {
+				delay: 0.3,
+				y: 0,
+				duration: 0.5,
+				stagger: 0.05,
+				onComplete: () => {
+					setIsVisible(true)
+				}
+			})
 
-				gsap.to(lines, {
-					delay: 0.3,
-					y: 0,
-					duration: 0.5,
-					stagger: 0.05,
-					onComplete: () => {
-						setIsVisible(true)
-					}
-				})
-			}, START_PAGE_ANIMATION_DELAY)
+			return
 		}
 
 		if(transitionState === 'finishLeave') {
@@ -57,7 +57,7 @@ export default function ParagraphAnimation({ text }: IProps) {
 				}
 			})
 		}
-	}, [transitionState])
+	}, [transitionState, isLoading])
 
 	return <BasicText ref={textRef} text={text} isVisible={isVisible} />
 }

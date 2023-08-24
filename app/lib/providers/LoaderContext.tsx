@@ -5,7 +5,6 @@ import React, {
   useContext,
   createContext,
   useMemo,
-  useEffect
 } from 'react'
 
 interface IProps {
