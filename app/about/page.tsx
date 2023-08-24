@@ -12,6 +12,8 @@ import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/Image
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
 import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
+import TextAnimation from '../lib/components/Animations/TextAnimations/TextAnimation'
+import ExternalLink from '../lib/components/Links/ExternalLink'
 
 export default function About() {
 	const [imagesUrls, setImagesUrls] = useState<string[]>([])
@@ -48,6 +50,9 @@ export default function About() {
 						<p>
 							<ParagraphAnimation text={aboutText} />
 						</p>
+							<span className="freelance-text">
+								<TextAnimation text="I'm available for freelance work." />
+							</span>
 					</div>
 				</div>
 			</main>
