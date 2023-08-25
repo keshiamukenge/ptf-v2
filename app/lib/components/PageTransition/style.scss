@@ -10,6 +10,21 @@
   width: 100%;
   display: block;
   z-index: 999;
+
+  .container-loading-text {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $white;
+    display: block;
+
+    span {
+      display: block;
+      transform: translateY(100%);
+    }
+  }
 }
 
 .dark-background {
