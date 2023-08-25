@@ -16,7 +16,6 @@ import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import { DEFAULT_DELAY_BEFORE_LEAVE, DEFAULT_DELAY_TO_START } from '@/app/lib/constants'
 
 export default function Home() {
-  const [startLoader, setStartLoader] = useState<boolean>(false)
   const [imagesUrls, setImagesUrls] = useState<string[]>([])
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
   const { projects, setSelectedProjectId, setProjectsRefs } = useProjects()

@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { usePathname } from "next/navigation";
@@ -23,7 +24,7 @@ export default function LinkWithDelay({ children, href, onClick, delayBeforeLeav
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		if(pathname === href) return
-
+		
 		onClick && onClick()
 		setTransitionState('start')
 		setTimeout(() => {
@@ -33,9 +34,14 @@ export default function LinkWithDelay({ children, href, onClick, delayBeforeLeav
 		
 		setTimeout(() => {
 			router.push(href)
-			setTransitionState('finishLeave')
 		}, delayBeforeLeave)
 	}
+
+	useEffect(() => {
+		if(pathname) {
+			setTransitionState('finishLeave')
+		}
+	}, [pathname, setTransitionState])
 
 	return (
 		<Link
