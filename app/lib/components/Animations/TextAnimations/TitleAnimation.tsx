@@ -1,9 +1,10 @@
 'use client'
 
 import { useRef, useEffect }	from 'react'
-import gsap from '@/app/lib/utils/gsap'
+import { Expo } from 'gsap'
 
 import './style.scss'
+import gsap from '@/app/lib/utils/gsap'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import { useLoader } from '@/app/lib/providers/LoaderContext'
 
@@ -19,7 +20,8 @@ export default function TitleAnimation({ text }: IProps) {
 	useEffect(() => {
 		if(!transitionState && !isLoading) {
 			gsap.to(titleRef.current, {
-				duration: 0.6,
+				duration: 1.5,
+				ease: Expo.easeOut,
 				y: 0,
 			})
 
@@ -29,7 +31,8 @@ export default function TitleAnimation({ text }: IProps) {
 		if(transitionState === 'finishLeave') {
 			gsap.to(titleRef.current, {
 				delay: 0.9,
-				duration: 0.6,
+				duration: 1.5,
+				ease: Expo.easeOut,
 				y: 0,
 			})
 		}
