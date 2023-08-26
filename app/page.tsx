@@ -16,7 +16,6 @@ import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 import { DEFAULT_DELAY_BEFORE_LEAVE, DEFAULT_DELAY_TO_START } from '@/app/lib/constants'
 
 export default function Home() {
-  const [startLoader, setStartLoader] = useState<boolean>(false)
   const [imagesUrls, setImagesUrls] = useState<string[]>([])
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null)
   const { projects, setSelectedProjectId, setProjectsRefs } = useProjects()
@@ -57,10 +56,10 @@ export default function Home() {
         <ul className="container-projects">
           {projects.map((project, id) => (
             <li
-            key={project.id}
-            ref={itemsRefs.current[id]}
-            onMouseEnter={() => setHoveredProjectId(id)}
-            onMouseLeave={() => setHoveredProjectId(null)}
+              key={project.id}
+              ref={itemsRefs.current[id]}
+              onMouseEnter={() => setHoveredProjectId(id)}
+              onMouseLeave={() => setHoveredProjectId(null)}
             >
               <LinkWithDelay
                 href={`/project/${project.slug}`}

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import gsap, { Expo } from "gsap"
+import gsap, { Expo, Power1 } from "gsap"
 
 import './style.scss'
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
@@ -9,6 +9,7 @@ import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
 export default function Transition() {
 	const transitionRef = useRef<HTMLSpanElement>(null)
 	const darkBackground = useRef<HTMLSpanElement>(null)
+	const loadingTextRef = useRef<HTMLSpanElement>(null)
 	const { transitionState } = usePageTransitions()
 
 	useEffect(() => {
@@ -23,6 +24,11 @@ export default function Transition() {
 				ease: Expo.easeOut,
 			})
 
+			gsap.to(loadingTextRef.current, {
+				y: 0,
+				duration: 0.8,
+			})
+
 			gsap.to(darkBackground.current, {
 				duration: 0.1,
 				opacity: 0.5,
@@ -35,6 +41,7 @@ export default function Transition() {
 				display: 'none',
 				opacity: 0
 			})
+			
 			gsap.to(transitionRef.current, {
 				delay: 0.2,
 				duration: 1,
@@ -47,12 +54,27 @@ export default function Transition() {
 					})
 				}
 			})
+
+			gsap.to(loadingTextRef.current, {
+				y: '-100%',
+				duration: 0.8,
+				ease: Power1.easeOut,
+				onComplete: () => {
+					gsap.set(loadingTextRef.current, {
+						y: '100%'
+					})
+				}
+			})
 		}
 	}, [transitionState])
 
 	return (
 		<>
-			<span className="container-transition" ref={transitionRef}></span>
+			<span className="container-transition" ref={transitionRef}>
+				<span className="container-loading-text">
+					<span ref={loadingTextRef}>LOADING</span>
+				</span>
+			</span>
 			<span ref={darkBackground} className="dark-background"></span>
 		</>
 	)
