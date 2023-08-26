@@ -27,7 +27,6 @@ export default function Transition() {
 			gsap.to(loadingTextRef.current, {
 				y: 0,
 				duration: 0.8,
-				// ease: Power1.easeIn,
 			})
 
 			gsap.to(darkBackground.current, {

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { usePathname } from "next/navigation";
 
 import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { useLoader } from '@/app/lib/providers/LoaderContext';
 
 interface IProps {
 	children?: React.ReactNode
@@ -21,6 +22,7 @@ export default function LinkWithDelay({ children, href, onClick, delayBeforeLeav
 	const { setTransitionState } = usePageTransitions()
 	const router = useRouter()
 	const pathname = usePathname()
+	const { isLoading } = useLoader()
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		if(pathname === href) return
@@ -38,10 +40,10 @@ export default function LinkWithDelay({ children, href, onClick, delayBeforeLeav
 	}
 
 	useEffect(() => {
-		if(pathname) {
+		if(pathname && !isLoading) {
 			setTransitionState('finishLeave')
 		}
-	}, [pathname, setTransitionState])
+	}, [pathname, setTransitionState, isLoading])
 
 	return (
 		<Link

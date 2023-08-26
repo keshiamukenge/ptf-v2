@@ -56,10 +56,10 @@ export default function Home() {
         <ul className="container-projects">
           {projects.map((project, id) => (
             <li
-            key={project.id}
-            ref={itemsRefs.current[id]}
-            onMouseEnter={() => setHoveredProjectId(id)}
-            onMouseLeave={() => setHoveredProjectId(null)}
+              key={project.id}
+              ref={itemsRefs.current[id]}
+              onMouseEnter={() => setHoveredProjectId(id)}
+              onMouseLeave={() => setHoveredProjectId(null)}
             >
               <LinkWithDelay
                 href={`/project/${project.slug}`}

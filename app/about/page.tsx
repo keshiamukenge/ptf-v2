@@ -51,7 +51,7 @@ export default function About() {
 							<ParagraphAnimation text={aboutText} />
 						</p>
 							<span className="freelance-text">
-								<TextAnimation text="I'm available for freelance work." />
+								<TextAnimation text="I'm available for freelance work." delay={0.9} />
 							</span>
 					</div>
 				</div>

@@ -118,7 +118,8 @@ export default function ProjectPage({ params }: IProps) {
 							text={
 								<ExternalLink label="View site" href={currentProject.siteUrl} />
 							}
-							/>
+							delay={0.6}
+						/>
 					</div>
 				</div>
 				<div className="container-project-images" ref={containerProjectImages}>

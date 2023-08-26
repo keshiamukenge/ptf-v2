@@ -9,39 +9,33 @@ import { useLoader } from '@/app/lib/providers/LoaderContext'
 
 interface IProps {
 	text: string | React.ReactNode
+	delay?: number
 }
 
-export default function TextAnimation({ text }: IProps) {
+export default function TextAnimation({ text, delay }: IProps) {
 	const { transitionState } = usePageTransitions()
 	const textRef = useRef<HTMLSpanElement>(null)
 	const { isLoading } = useLoader()
 
 	useEffect(() => {
-		if(!transitionState && !isLoading) {	
+		if(!transitionState && !isLoading) {
 			gsap.to(textRef.current, {
-				delay: 0.3,
+				delay: delay ? delay + 0.3 : 0.3,
 				y: 0,
 				duration: 0.6,
 			})
 
 			return
 		}
-		
-		if(transitionState === 'start') {
-			gsap.to(textRef.current, {
-				duration: 0.3,
-				opacity: 0,
-			})
-		}
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(textRef.current, {
-				delay: 1.2,
+				delay: delay ? delay + 1.2 : 1.2,
 				y: 0,
 				duration: 0.6,
 			})
 		}
-	}, [transitionState, isLoading])
+	}, [transitionState, isLoading, delay])
 
 	return(
 		<span className="container-text-animation">
