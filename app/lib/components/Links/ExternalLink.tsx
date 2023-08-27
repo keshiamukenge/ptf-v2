@@ -9,9 +9,10 @@ import './style.scss'
 interface IProps {
 	label: string
 	href: string
+	ariaLabel?: string
 }
 
-export default function ExternalLink({ label, href }: IProps) {
+export default function ExternalLink({ label, href, ariaLabel }: IProps) {
 	const firstArrowIconRef = useRef<HTMLImageElement>(null)
 	const secondArrowIconRef = useRef<HTMLImageElement>(null)
 
@@ -44,7 +45,7 @@ export default function ExternalLink({ label, href }: IProps) {
 
 	return(
 		<div className="ExternalLink" onMouseEnter={onEnter}>
-			<a href={href} target='_blank'></a>
+			<a href={href} target='_blank' aria-label={ariaLabel}></a>
 			<span className="link-label">{label}</span>
 			<span className="container-icon">
 				<Image ref={firstArrowIconRef} className="first-arrow" src="/svg/arrow.svg" alt="arrow icon" width={30} height={30} />

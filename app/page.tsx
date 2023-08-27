@@ -38,6 +38,8 @@ export default function Home() {
   }, [itemsRefs, setProjectsRefs])
 
   useEffect(() => {
+    if(!homePageRef.current) return
+    
 		if(transitionState === 'start') {
 			gsap.to(homePageRef.current, {
 				duration: 0.5,
@@ -63,6 +65,7 @@ export default function Home() {
             >
               <LinkWithDelay
                 href={`/project/${project.slug}`}
+                ariaLabel="View details of project"
                 onClick={() =>
                   setSelectedProjectId(id)
                 }

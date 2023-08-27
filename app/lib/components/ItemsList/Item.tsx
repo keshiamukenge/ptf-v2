@@ -24,7 +24,7 @@ export default function Item({ item }: IProps) {
 	const { isLoading } = useLoader()
 
 	function showProjectDetails() {
-		if(!itemRef.current) return
+		if(!itemRef.current || !containerArrowsIconsRef.current) return
 
 		gsap.to(itemRef.current, {
 			duration: 0.5,
@@ -38,7 +38,7 @@ export default function Item({ item }: IProps) {
 	}
 
 	function hideProjectDetails() {
-		if(!itemRef.current) return
+		if(!itemRef.current || !containerArrowsIconsRef.current) return
 
 		gsap.to(itemRef.current, {
 			duration: 0.5,
@@ -60,7 +60,7 @@ export default function Item({ item }: IProps) {
 	}, [showDetails])
 
 	useEffect(() => {
-		if(!containerArrowsIcons.current) return
+		if(!containerArrowsIcons.current || !borderRef.current) return
 
 		if(!transitionState && !isLoading) {
 			gsap.to(containerArrowsIcons.current, {

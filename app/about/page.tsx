@@ -11,9 +11,8 @@ import ParagraphAnimation from '@/app/lib/components/Animations/TextAnimations/P
 import ImageAnimation from '@/app/lib/components/Animations/ImageAnimation/ImageAnimation'
 import ScrollBar from '@/app/lib/components/ScrollBar/ScrollBar'
 import LoaderWrapper from '@/app/lib/components/Loader/LoaderWrapper'
-import { usePageTransitions } from '../lib/providers/PageTransitionsContext'
-import TextAnimation from '../lib/components/Animations/TextAnimations/TextAnimation'
-import ExternalLink from '../lib/components/Links/ExternalLink'
+import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import TextAnimation from '@/app/lib/components/Animations/TextAnimations/TextAnimation'
 
 export default function About() {
 	const [imagesUrls, setImagesUrls] = useState<string[]>([])
@@ -27,6 +26,8 @@ export default function About() {
 	}, [setImagesUrls])
 
 	useEffect(() => {
+		if(!aboutPageRef.current) return
+		
 		if(transitionState === 'start') {
 			gsap.to(aboutPageRef.current, {
 				duration: 0.5,

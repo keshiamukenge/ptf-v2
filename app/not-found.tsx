@@ -14,6 +14,8 @@ export default function NotFound() {
 	const { transitionState } = usePageTransitions()
 
 	useEffect(() => {
+		if(!notFoundPageRef.current) return
+		
 		if(transitionState === 'start') {
 			gsap.to(notFoundPageRef.current, {
 				duration: 0.5,

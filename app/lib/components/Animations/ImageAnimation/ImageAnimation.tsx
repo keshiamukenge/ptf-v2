@@ -37,6 +37,8 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 	}, [isHovered])
 
 	useEffect(() => {
+		if(!imgRef.current) return
+		
 		if(!transitionState && !isLoading) {
 			gsap.to(imgRef.current, {
 				opacity: 1,
