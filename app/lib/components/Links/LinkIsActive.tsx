@@ -21,7 +21,7 @@ export default function LinkIsActive({ children, additionalClassName, path, onCl
 	const device = useResponsive()
 
 	const handleMouseEnter = useCallback(() => {
-		if(device === 'mobile' || device === 'tablet') return
+		if(device === 'mobile' || device === 'tablet' || !underlineRef.current) return
 
 		gsap.to(underlineRef.current, {
 			duration: 0.3,
@@ -30,7 +30,7 @@ export default function LinkIsActive({ children, additionalClassName, path, onCl
 	}, [device])
 
 	const handleMouseLeave = useCallback(() => {
-		if(device === 'mobile' || device === 'tablet') return
+		if(device === 'mobile' || device === 'tablet' || !underlineRef.current) return
 
 		gsap.to(underlineRef.current, {
 			duration: 0.3,

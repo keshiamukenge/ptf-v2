@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect, useCallback } from 'react'
-import gsap, { Expo } from 'gsap'
+import gsap, { Expo, Linear } from 'gsap'
 
 import './style.scss'
 import { useImagesLoader } from '@/app/lib/hooks/useImagesLoader'
@@ -23,7 +23,7 @@ export default function Loader({ imagesUrls }: IProps) {
 	const starRotationAnimation = useRef<null | GSAPTween>(null);
 
 	const transitionAnimation = useCallback(() => {
-		if(!starBranch1.current || !starBranch2.current || !starBranch3.current || !starBranch4.current) return
+		if(!starBranch1.current || !starBranch2.current || !starBranch3.current || !starBranch4.current || !progressRef.current) return
 
 		gsap.to(starBranch1.current, {
 			rotate: 90,
@@ -78,17 +78,19 @@ export default function Loader({ imagesUrls }: IProps) {
 			rotation: 360,
 			repeat: -1,
 			duration: 2.5,
-			ease: 'linear',
+			ease: Linear.easeNone,
 		})
 	}, [])
 
 	useEffect(() => {
+		if(!imageRef.current || !starRotationAnimation.current) return
+		
 		if(progress === 100) {
 			starRotationAnimation.current?.kill()
 			gsap.to(imageRef.current,{
 				rotation: 180,
 				duration: 0.75,
-				ease: 'linear',
+				ease: Linear.easeNone,
 				onComplete: () => {
 					transitionAnimation()
 				}

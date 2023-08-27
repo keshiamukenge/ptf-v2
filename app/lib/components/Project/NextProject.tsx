@@ -22,6 +22,8 @@ export default function NextProject({ project }: IProps) {
 	const device = useResponsive()
 
 	function onEnter() {
+		if(!lineRef.current || !arrowIconRef.current) return
+
 		if(device === 'desktop') {
 			gsap.to(lineRef.current, {
 				duration: 0.3,
@@ -36,6 +38,8 @@ export default function NextProject({ project }: IProps) {
 	}
 
 	function onLeave() {
+		if(!lineRef.current || !arrowIconRef.current) return
+		
 		if(device === 'desktop') {
 			gsap.to(lineRef.current, {
 				duration: 0.3,

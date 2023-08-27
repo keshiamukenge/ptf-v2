@@ -28,9 +28,11 @@ export default function ParagraphAnimation({ text }: IProps) {
 	}, [])
 
 	useEffect(() => {
+		if(!textRef.current) return
+
 		const lines = textRef.current?.querySelectorAll('span span')
 
-		if(!textRef.current || !lines) return
+		if(!lines) return
 
 		if(!transitionState && !isLoading) {
 			gsap.to(lines, {

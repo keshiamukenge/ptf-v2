@@ -18,6 +18,8 @@ export default function TitleAnimation({ text }: IProps) {
 	const { isLoading } = useLoader()
 
 	useEffect(() => {
+		if(!titleRef.current) return
+		
 		if(!transitionState && !isLoading) {
 			gsap.to(titleRef.current, {
 				duration: 1.5,

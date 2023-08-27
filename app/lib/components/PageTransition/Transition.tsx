@@ -13,6 +13,8 @@ export default function Transition() {
 	const { transitionState } = usePageTransitions()
 
 	useEffect(() => {
+		if(!transitionRef.current || !darkBackground.current || !loadingTextRef.current) return
+		
 		if (transitionState === 'beforeLeave') {
 			gsap.set(darkBackground.current, {
 				display: 'block'

@@ -38,6 +38,8 @@ export default function Archives() {
 	}, [])
 
 	useEffect(() => {
+		if(!archivesPageRef.current) return
+		
 		if(transitionState === 'start') {
 			gsap.to(archivesPageRef.current, {
 				duration: 0.5,

@@ -18,6 +18,8 @@ export default function TextAnimation({ text, delay }: IProps) {
 	const { isLoading } = useLoader()
 
 	useEffect(() => {
+		if(!textRef.current) return
+		
 		if(!transitionState && !isLoading) {
 			gsap.to(textRef.current, {
 				delay: delay ? delay + 0.3 : 0.3,

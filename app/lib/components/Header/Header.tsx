@@ -26,7 +26,7 @@ export default function Header() {
 	}, [])
 
 	useEffect(() => {
-		if(isLoading) return
+		if(isLoading || !headerRef.current) return
 
 		gsap.to(headerRef.current, {
 			opacity: 1,
@@ -36,6 +36,8 @@ export default function Header() {
 	}, [isLoading])
 
 	useEffect(() => {
+		if(!mobileMenuContentRef.current) return
+		
 		if(mobileMenuIsOpen) {
 			gsap.set(mobileMenuContentRef.current, {
 				display: 'block',

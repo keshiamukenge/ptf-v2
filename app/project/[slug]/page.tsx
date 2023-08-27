@@ -39,17 +39,17 @@ export default function ProjectPage({ params }: IProps) {
 	const device = useResponsive()
 
 	const fixePositionOnScroll = useCallback(() => {
-		if(!containerProjectContentRef.current) return
+		if(!containerProjectContentRef.current || !containerProjectImages.current) return
 
 		gsap.to(containerProjectContentRef.current, {
 			scrollTrigger: {
 				trigger: containerProjectImages.current,
-				start: 'bottom +=100%',
-				end: 'bottom -=100%',
+				start: "bottom +=100%",
+				end: "bottom -=100%",
 				scrub: true,
 			},
 			y: "-200vh",
-			ease: 'none',
+			ease: "none",
 		})
 	}, [containerProjectContentRef])
 
@@ -85,6 +85,8 @@ export default function ProjectPage({ params }: IProps) {
 	}, [device, fixePositionOnScroll])
 
 	useEffect(() => {
+		if(!projectPageRef.current) return
+		
 		if(transitionState === 'start') {
 			gsap.to(projectPageRef.current, {
 				duration: 0.5,
