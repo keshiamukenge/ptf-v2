@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useState, useRef, useCallback } from 'react'
-import gsap from '@/app/lib/utils/gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import './style.scss'
+import gsap from '@/app/lib/utils/gsap'
 import { useScroll } from '@/app/lib/hooks/useScroll'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import TitleAnimation from '@/app/lib/components/Animations/TextAnimations/TitleAnimation'
@@ -46,12 +47,18 @@ export default function ProjectPage({ params }: IProps) {
 				trigger: containerProjectImages.current,
 				start: "bottom +=100%",
 				end: "bottom -=100%",
-				scrub: true,
+				pinSpacing: false,
+				onUpdate: self => {
+					if(!containerProjectContentRef.current) return
+      
+					const multiplier = 1700
+					const scrollY = -self.progress * multiplier;
+					containerProjectContentRef.current.style.transform = `translate3d(0, ${scrollY}px, 0)`;
+				}
 			},
-			y: "-200vh",
-			ease: "none",
+			ease: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 		})
-	}, [containerProjectContentRef])
+	}, [])
 
 	useEffect(() => {
 		if(!currentProject) return
@@ -85,12 +92,20 @@ export default function ProjectPage({ params }: IProps) {
 	}, [device, fixePositionOnScroll])
 
 	useEffect(() => {
-		if(!projectPageRef.current) return
+		if(!containerProjectContentRef.current || !containerProjectImages.current) return
 		
 		if(transitionState === 'start') {
-			gsap.to(projectPageRef.current, {
-				duration: 0.5,
-				y: -100,
+			const topPosition = containerProjectContentRef.current.getBoundingClientRect().top
+			ScrollTrigger.killAll()
+			gsap.set(containerProjectContentRef.current, {
+				y: topPosition,
+				top: 0,
+				onComplete: () => {
+					gsap.to([containerProjectImages.current, containerProjectContentRef.current], {
+						duration: 0.5,
+						y: "-=100",
+					})
+				}
 			})
 		}
 	}, [transitionState])
@@ -127,7 +142,7 @@ export default function ProjectPage({ params }: IProps) {
 				<div className="container-project-images" ref={containerProjectImages}>
 					<ProjectImages images={currentProject.imagesContent} />
 				</div>
-				<NextProject project={currentProject} />
+				<NextProject />
 			</main>
 			<Footer />
 		</LoaderWrapper>
