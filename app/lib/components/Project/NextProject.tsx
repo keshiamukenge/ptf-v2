@@ -1,24 +1,22 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import gsap from '@/app/lib/utils/gsap'
 
 import './style.scss'
 import { useProjects } from '@/app/lib/providers/ProjectsContext'
 import LinkWithDelay from '@/app/lib/components/Links/LinkWithDelay'
-import { Project } from "@/app/lib/types/projects"
 import { useResponsive } from '@/app/lib/hooks/useResponsive'
+import { usePageTransitions } from '@/app/lib/providers/PageTransitionsContext'
+import { DEFAULT_DELAY_BEFORE_LEAVE } from '@/app/lib/constants'
 
-interface IProps {
-	project: Project
-}
-
-export default function NextProject({ project }: IProps) {
+export default function NextProject() {
 	const lineRef = useRef<HTMLHeadingElement>(null)
 	const arrowIconRef = useRef<HTMLImageElement>(null)
 	const nextProjectContainer = useRef<HTMLDivElement>(null)
 	const { setSelectedProjectId, projects, nextProjectId } = useProjects()
+	const { transitionState } = usePageTransitions()
 	const device = useResponsive()
 
 	function onEnter() {
@@ -58,6 +56,17 @@ export default function NextProject({ project }: IProps) {
 		}
 	}
 
+	useEffect(() => {
+		if(!nextProjectContainer.current) return
+		
+		if(transitionState === 'start') {
+			gsap.to(nextProjectContainer.current, {
+				duration: 0.5,
+				y: '-=100',
+			})
+		}
+	}, [transitionState])
+
 	if(typeof nextProjectId !== 'number') {
 		return null
 	}
@@ -67,7 +76,7 @@ export default function NextProject({ project }: IProps) {
 			<LinkWithDelay
 				href={`/project/${projects[nextProjectId].slug}`}
 				onClick={() => setSelectedProjectId(projects[nextProjectId].id)}
-				delayBeforeLeave={400}
+				delayBeforeLeave={DEFAULT_DELAY_BEFORE_LEAVE}
 				delayToStart={0}
 				prefetch
 			>

@@ -6,7 +6,6 @@ import gsap, { Expo, Linear } from 'gsap'
 import './style.scss'
 import { useImagesLoader } from '@/app/lib/hooks/useImagesLoader'
 
-
 interface IProps {
 	imagesUrls: string[]
 }

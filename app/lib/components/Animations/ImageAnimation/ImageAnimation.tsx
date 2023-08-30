@@ -48,7 +48,7 @@ export default function ImageAnimation({ src, alt, width, height, isHovered }: I
 
 		if(transitionState === 'finishLeave') {
 			gsap.to(imgRef.current, {
-				delay: 0.5,
+				delay: 1,
 				opacity: 1,
 				duration: 0.8,
 			})
