@@ -19,7 +19,7 @@ export default function About() {
 	const aboutPageRef = useRef<HTMLElement>(null)
 	const { transitionState } = usePageTransitions()
 	const scroll = useScroll()
-	const aboutText = "Hello, I'm Keshia Mukenge, a web developer specialized in front-end web development. After five years of studies and driven by my passion for design and art, I've established my calling in creative web development. My approach aims to harmonize the technicality of code with artistic creativity, with the goal of giving rise to unique web experiences. My portfolio highlights projects focused on animation and 3D (WebGL), areas that I've carefully cultivated throughout my journey."
+	const aboutText = "Hello, I'm Keshia Mukenge, a freelance web developer specialized in front-end web development. After five years of studies and driven by my passion for design and art, I've established my calling in creative web development. My approach aims to harmonize the technicality of code with artistic creativity, with the goal of giving rise to unique web experiences. My portfolio highlights projects focused on animation and 3D (WebGL), areas that I've carefully cultivated throughout my journey."
 
 	useEffect(() => {
 		setImagesUrls(['/images/about.webp'])
