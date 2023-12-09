@@ -12,7 +12,7 @@ export default function Footer({ fixedPosition }: IProps) {
 				<ExternalLink href="mailto:mukenge.keshia@gmail.com" label="Contact" ariaLabel="Send email to Keshia Mukenge" />
 				<div className="container-links">
 					<ExternalLink href="https://www.linkedin.com/in/keshia-m-5a93a2121/" label="Linkedin" ariaLabel="View Keshia Mukenge's Linkedin profile" />
-					<ExternalLink href="https://github.com/keshiamukenge" label="GitHub" ariaLabel="View Keshia Mukenge's github profile" />
+					<ExternalLink href="https://twitter.com/KeshiaMukenge" label="Twitter" ariaLabel="View Keshia Mukenge's twitter profile" />
 				</div>
 			</div>
 			<div className="content-bottom">

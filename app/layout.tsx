@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Keshia Mukenge | Portfolio',
-  description: 'Keshia Mukenge is a front-end web developer based in Bordeaux, France.',
+  description: 'Keshia Mukenge is a freelance front-end developer based in Bordeaux, France.',
 }
 
 export default function RootLayout(props: {
