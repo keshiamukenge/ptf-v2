@@ -2,72 +2,62 @@
 	"projects": [
 		{
 			"id": 0,
-			"title": "Gaggenau",
-			"slug": "gaggenau",
-			"siteUrl": "https://gaggenau.vercel.app/",
+			"title": "New York City",
+			"slug": "new-york-city",
+			"siteUrl": "https://new-york-wheat.vercel.app/",
 			"image": {
-				"src": "/images/projects/gaggenau/1.webp",
+				"src": "/images/projects/nyc/1.webp",
 				"alt": "presentation of the project"
 			},
 			"details": [
 				{
 					"label": "Date",
 					"content": [
-						"2022"
+						"2023"
 					]
 				},
 				{
 					"label": "Role",
 					"content": [
+						"Designer",
 						"Developer"
-					]
-				},
-				{
-					"label": "Designer",
-					"content": [
-						"Maria Sheveleva"
 					]
 				},
 				{
 					"label": "Stack",
 					"content": [
-						"Vuejs",
-						"Troisjs",
-						"Vercel"
+						"NodeJS",
+						"TypeScript",
+						"ThreeJS"
 					]
 				}
 			],
-			"sources": {
-				"label": "Sources",
-				"links": [
-					{
-						"label": "Behance",
-						"url": "https://www.behance.net/gallery/156337103/Gaggenauwebsite-redesign"
-					}
-				]
-			},
 			"textsContent": [
-				"For this fictional project, I reached out to designer Maria Sheveleva via Behance with the aim of bringing her redesign proposal to life for the Gaggenau website. This company is renowned for its expertise in luxury kitchen appliances. Due to time constraints, I was able to create only the homepage of the website. Nonetheless, this experience enabled me to enhance my programming skills while directly collaborating with a designer."
+				"Following my incredible stay in the city of New York, I wanted to immortalize this moment by designing and developing this website. I aimed to capture the grandeur and extravagance while maintaining a certain finesse, which is what this amazing city inspires in me."
 			],
 			"imagesContent": [
 				{
-					"src": "/images/projects/gaggenau/6.webp",
+					"src": "/images/projects/nyc/2.webp",
 					"alt": "illustration of the project"
 				},
 				{
-					"src": "/images/projects/gaggenau/2.webp",
+					"src": "/images/projects/nyc/3.webp",
 					"alt": "illustration of the project"
 				},
 				{
-					"src": "/images/projects/gaggenau/3.webp",
+					"src": "/images/projects/nyc/4.webp",
 					"alt": "illustration of the project"
 				},
 				{
-					"src": "/images/projects/gaggenau/4.webp",
+					"src": "/images/projects/nyc/5.webp",
 					"alt": "illustration of the project"
 				},
 				{
-					"src": "/images/projects/gaggenau/5.webp",
+					"src": "/images/projects/nyc/6.webp",
+					"alt": "illustration of the project"
+				},
+				{
+					"src": "/images/projects/nyc/7.webp",
 					"alt": "illustration of the project"
 				}
 			]
