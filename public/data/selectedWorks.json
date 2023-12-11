@@ -2,9 +2,9 @@
 	"projects": [
 		{
 			"id": 0,
-			"title": "New York City",
-			"slug": "new-york-city",
-			"siteUrl": "https://new-york-wheat.vercel.app/",
+			"title": "Big apple insider",
+			"slug": "big-apple-insider",
+			"siteUrl": "https://big-apple-insider.vercel.app/",
 			"image": {
 				"src": "/images/projects/nyc/1.webp",
 				"alt": "presentation of the project"
@@ -114,8 +114,8 @@
 		},
 		{
 			"id": 2,
-			"title": "Portfolio 2022",
-			"slug": "portfolio-2022",
+			"title": "Folio 2022",
+			"slug": "folio-2022",
 			"siteUrl": "https://2022.keshiamukenge.fr/",
 			"image": {
 				"src": "/images/projects/portfolio-2022/1.webp",
@@ -144,7 +144,7 @@
 				}
 			],
 			"textsContent": [
-				"Here is my previous portfolio, crafted between 2021 and 2022."
+				"Here is my previous folio, crafted between 2021 and 2022."
 			],
 			"imagesContent": [
 				{
